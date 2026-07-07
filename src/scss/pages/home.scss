@@ -1761,121 +1761,6 @@
     }
 }
 
-// ─── ERROR MESSAGES ────────────────────────
-.nf-error-wrap {
-    &.nf-error {
-        color: $orange;
-        font-size: 0.8125rem;
-        margin-top: $space-2;
-        @include flex-align;
-        gap: $space-1;
-        font-family: $font-ui;
-        font-weight: 500;
-        display: none;
-
-        &:not(:empty) {
-            display: flex;
-            padding: $space-2 $space-3;
-            background: rgba($orange, 0.05);
-            border-left: 3px solid $orange;
-            border-radius: $radius-sm;
-        }
-
-        &::before {
-            content: '⚠ ';
-            font-weight: bold;
-        }
-    }
-}
-
-// Field error state
-.nf-field-container {
-    &.has-error {
-        input,
-        textarea,
-        select {
-            border-color: $orange !important;
-            background-color: rgba($orange, 0.03) !important;
-        }
-    }
-}
-
-// ─── SUCCESS/ERROR MESSAGES (After Submit) ──
-.nf-response-msg {
-    border-radius: $radius-sm;
-    padding: $space-4;
-    margin-bottom: $space-6;
-    font-size: 0.875rem;
-    font-weight: 500;
-    font-family: $font-ui;
-    display: none;
-
-    &:not(:empty) {
-        display: block;
-    }
-
-    &.success {
-        background: rgba($secondary, 0.1);
-        border: 1px solid $secondary;
-        color: $secondary-hover;
-
-        &::before {
-            content: '✓ ';
-            font-weight: bold;
-            margin-right: $space-2;
-        }
-    }
-
-    &.error {
-        background: rgba($orange, 0.1);
-        border: 1px solid $orange;
-        color: #d97706;
-
-        &::before {
-            content: '✕ ';
-            font-weight: bold;
-            margin-right: $space-2;
-        }
-    }
-}
-
-// ─── FORM ERRORS (Top of Form) ────────────
-.nf-form-errors {
-    border-radius: $radius-sm;
-    padding: $space-4;
-    margin-bottom: $space-6;
-    font-size: 0.875rem;
-    font-weight: 500;
-    font-family: $font-ui;
-    background: rgba($orange, 0.1);
-    border: 1px solid $orange;
-    color: #d97706;
-    display: none;
-
-    &:not(:empty) {
-        display: block;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-            margin-bottom: $space-2;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            &::before {
-                content: '• ';
-                margin-right: $space-2;
-                font-weight: bold;
-            }
-        }
-    }
-}
 
 // ─── HELP TEXT ────────────────────────────
 .nf-help-text,
@@ -1909,29 +1794,6 @@ select {
     }
 }
 
-// High contrast mode
-@media (prefers-contrast: more) {
-    .textbox-wrap input,
-    .email-wrap input,
-    .phone-wrap input,
-    textarea,
-    select {
-        border-width: 2px;
-    }
-
-    .submit-wrap input[type='submit'] {
-        border: 2px solid $primary;
-    }
-}
-
-// Reduced motion
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
 
 // ─── RESPONSIVE ADJUSTMENTS ───────────────
 @media (max-width: 768px) {
@@ -1953,37 +1815,6 @@ select {
 
     .nf-field-container {
         margin-bottom: 0;
-    }
-}
-
-// Tablet adjustments
-@media (min-width: 768px) and (max-width: 1024px) {
-    #nf-form-6-cont {
-        .nf-form-wrap {
-            padding: $space-10;
-        }
-    }
-}
-
-// ─── PRINT STYLES ─────────────────────────
-@media print {
-    #nf-form-6-cont {
-        .nf-form-wrap {
-            box-shadow: none;
-            border: 1px solid $grey-300;
-            padding: $space-6;
-        }
-    }
-
-    .submit-wrap {
-        display: none;
-    }
-
-    input,
-    textarea,
-    select {
-        border: 1px solid $grey-300;
-        background: $white;
     }
 }
 
