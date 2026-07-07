@@ -1,0 +1,180 @@
+// ─── 1. SCSS Variables (mirrors CSS custom properties) ────────
+$primary: #009bd1;
+$primary-light: #33b8e8;
+$primary-hover: #007daa;
+$secondary: #06b58c;
+$secondary-light: #2ecfab;
+$secondary-hover: #059070;
+$tertiary: #666666;
+$green: #009bd1;
+$green-light: #33b8e8;
+$green-hover: #007daa;
+$navy: #003d54;
+$navy-light: #005070;
+$grey-900: #1f2937;
+$grey-700: #374151;
+$grey-500: #666666;
+$grey-300: #d1d5db;
+$grey-200: #e5e7eb;
+$grey-100: #f3f4f6;
+$grey-50: #f9fafb;
+$white: #ffffff;
+$orange: #f59e0b;
+
+$font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+$font-ui: 'Inter', system-ui, sans-serif;
+
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-pill: 9999px;
+
+$shadow-sm:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+$shadow-md:
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+$shadow-lg:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+
+$nav-h: 68px;
+
+// ─── 2. CSS Custom Properties (runtime tokens) ────────────────
+:root {
+    --primary: #{$primary};
+    --primary-light: #{$primary-light};
+    --primary-hover: #{$primary-hover};
+    --secondary: #{$secondary};
+    --secondary-light: #{$secondary-light};
+    --secondary-hover: #{$secondary-hover};
+    --tertiary: #{$tertiary};
+    --green: #{$green};
+    --green-light: #{$green-light};
+    --green-hover: #{$green-hover};
+    --navy: #{$navy};
+    --navy-light: #{$navy-light};
+    --grey-900: #{$grey-900};
+    --grey-700: #{$grey-700};
+    --grey-500: #{$grey-500};
+    --grey-300: #{$grey-300};
+    --grey-200: #{$grey-200};
+    --grey-100: #{$grey-100};
+    --grey-50: #{$grey-50};
+    --white: #{$white};
+    --orange: #{$orange};
+    --font-display: #{$font-display};
+    --font-ui: #{$font-ui};
+    --space-1: #{$space-1};
+    --space-2: #{$space-2};
+    --space-3: #{$space-3};
+    --space-4: #{$space-4};
+    --space-5: #{$space-5};
+    --space-6: #{$space-6};
+    --space-8: #{$space-8};
+    --space-10: #{$space-10};
+    --space-12: #{$space-12};
+    --space-16: #{$space-16};
+    --space-20: #{$space-20};
+    --space-24: #{$space-24};
+    --radius-sm: #{$radius-sm};
+    --radius-md: #{$radius-md};
+    --radius-lg: #{$radius-lg};
+    --radius-xl: #{$radius-xl};
+    --radius-pill: #{$radius-pill};
+    --shadow-sm: #{$shadow-sm};
+    --shadow-md: #{$shadow-md};
+    --shadow-lg: #{$shadow-lg};
+    --nav-h: #{$nav-h};
+}
+
+// ─── 3. Mixins ────────────────────────────────────────────────
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-align {
+    display: flex;
+    align-items: center;
+}
+
+@mixin container($max: 1280px) {
+    max-width: $max;
+    margin-inline: auto;
+    padding-inline: $space-6;
+}
+
+@mixin card-hover($shadow: $shadow-md, $y: -2px) {
+    transition:
+        box-shadow 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+    &:hover {
+        box-shadow: $shadow;
+        transform: translateY($y);
+    }
+}
+
+@mixin tag-label($color: $secondary) {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color;
+}
+
+@mixin icon-box($size: 40px, $bg: rgba($green, 0.1), $color: $green, $radius: $radius-sm) {
+    width: $size;
+    height: $size;
+    background: $bg;
+    border-radius: $radius;
+    @include flex-center;
+    color: $color;
+}
+
+// ─── 4. Placeholders ──────────────────────────────────────────
+%reset-base {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+%pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: $space-1 $space-3;
+    border-radius: $radius-pill;
+}
