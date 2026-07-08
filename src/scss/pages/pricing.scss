@@ -1,0 +1,795 @@
+@use '../variables' as *;
+
+// ============================================
+// 2. MIXINS (from your tokens)
+// ============================================
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-align {
+    display: flex;
+    align-items: center;
+}
+
+@mixin container($max: 1280px) {
+    max-width: $max;
+    margin-inline: auto;
+    padding-inline: $space-6;
+}
+
+@mixin card-hover($shadow: $shadow-md, $y: -2px) {
+    transition:
+        box-shadow 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+    &:hover {
+        box-shadow: $shadow;
+        transform: translateY($y);
+    }
+}
+
+@mixin tag-label($color: $secondary) {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color;
+}
+
+@mixin icon-box($size: 40px, $bg: rgba($green, 0.1), $color: $green, $radius: $radius-sm) {
+    width: $size;
+    height: $size;
+    background: $bg;
+    border-radius: $radius;
+    @include flex-center;
+    color: $color;
+}
+
+@mixin pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: $space-1 $space-3;
+    border-radius: $radius-pill;
+}
+
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-ui;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+// ============================================
+// 3. RESET & BASE
+// ============================================
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-ui;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $grey-900;
+    background: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-display;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $primary-hover;
+    }
+}
+
+.container {
+    @include container;
+
+    @media (max-width: 768px) {
+        padding-inline: $space-4;
+    }
+}
+
+// ============================================
+// PAGE HERO SECTION
+// ============================================
+.page-hero {
+    background: linear-gradient(135deg, $navy 0%, $navy-light 100%);
+    color: $white;
+    padding: $space-24 0;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+}
+
+.page-hero__label {
+    @include tag-label($primary-light);
+    margin-bottom: $space-4;
+}
+
+.page-hero__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: $space-4;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.page-hero__sub {
+    font-size: 1.125rem;
+    color: rgba($white, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+// ============================================
+// PRICING SECTION
+// ============================================
+.pricing-section {
+    background: $white;
+    padding: $space-24 0;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+}
+
+// PRICING GRID
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $space-6;
+    margin-bottom: $space-24;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: $space-4;
+    }
+
+    .wp-block-column {
+        @include flex-col;
+    }
+}
+
+// PRICING CARD
+.pricing-card {
+    @include flex-col;
+    background: $white;
+    border: 1px solid $grey-200;
+    border-radius: $radius-lg;
+    padding: $space-6;
+    height: 100%;
+    @include card-hover($shadow-md);
+
+    @media (max-width: 768px) {
+        padding: $space-5;
+    }
+
+    // Featured card (BYOC)
+    &--featured {
+        border: 2px solid $primary;
+        background: linear-gradient(to bottom, rgba($primary, 0.02), $white);
+        position: relative;
+        z-index: 2;
+        transform: scale(1.02);
+
+        @media (max-width: 768px) {
+            transform: scale(1);
+        }
+
+        &:hover {
+            transform: translateY(-2px) scale(1.02);
+
+            @media (max-width: 768px) {
+                transform: translateY(-2px) scale(1);
+            }
+        }
+
+        box-shadow: $shadow-lg;
+    }
+}
+
+.pricing-card__badge {
+    @include pill-badge;
+    background: linear-gradient(135deg, $orange 0%, #f97316 100%);
+    color: $white;
+    margin-bottom: $space-4;
+    width: fit-content;
+}
+
+.pricing-card__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $grey-500;
+    margin-bottom: $space-3;
+}
+
+.pricing-card__price-box {
+    margin-bottom: $space-4;
+    padding-bottom: $space-4;
+    border-bottom: 1px solid $grey-200;
+}
+
+.pricing-card__amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $navy;
+    line-height: 1;
+    margin: 0;
+    font-family: $font-display;
+
+    &--free {
+        color: $secondary;
+    }
+}
+
+.pricing-card__period {
+    font-size: 0.875rem;
+    color: $grey-500;
+    margin: $space-2 0 0 0;
+}
+
+.pricing-card__promo {
+    font-size: 0.8125rem;
+    color: $primary;
+    margin-bottom: $space-4;
+    font-weight: 500;
+}
+
+.pricing-card__description {
+    font-size: 0.875rem;
+    color: $grey-500;
+    margin-bottom: $space-5;
+    line-height: 1.6;
+}
+
+.pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: $space-6;
+    flex-grow: 1;
+    margin-left: 0;
+    li {
+        font-size: 0.875rem;
+        padding: $space-1 0;
+        color: $grey-900;
+        border-bottom: 1px solid $grey-100;
+
+        &:before {
+            content: '✓ ';
+            color: $secondary;
+            font-weight: 700;
+            margin-right: $space-2;
+        }
+
+        strong {
+            color: $navy;
+            font-weight: 700;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.pricing-card__button {
+    @include button-base;
+    background: $white;
+    color: $navy;
+    width: 100%;
+    margin-top: auto;
+
+    &:hover {
+        background: $grey-100;
+        border-color: $grey-300;
+    }
+
+    &--primary {
+        color: $white;
+        border: none;
+
+        &:hover {
+            box-shadow: $shadow-lg;
+        }
+    }
+
+    .wp-block-button__link {
+        display: 100%;
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+        width: 100%;
+    }
+}
+
+.pricing-card__footer {
+    font-size: 0.8125rem;
+    color: $grey-500;
+    text-align: center;
+    margin-top: $space-4;
+}
+
+// TRUST NOTE
+.pricing-trust-note {
+    font-size: 0.875rem;
+    color: $grey-500;
+    text-align: center;
+    margin-top: $space-24 !important;
+    margin-bottom: $space-6 !important;
+}
+
+// BUSINESS NOTICE
+.business-notice {
+    background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($secondary, 0.05) 100%);
+    border-left: 4px solid $primary;
+    padding: $space-5;
+    border-radius: $radius-md;
+    margin-top: $space-6;
+
+    p {
+        font-size: 0.875rem;
+        color: $grey-900;
+        line-height: 1.7;
+        margin: 0;
+
+        strong {
+            color: $navy;
+            font-weight: 700;
+        }
+
+        a {
+            color: $primary;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// ============================================
+// COMPARISON SECTION
+// ============================================
+.comparison-section {
+    background: $grey-100;
+    padding: $space-24 0;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+}
+
+.comparison-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $space-6;
+    color: $navy;
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
+}
+
+.comparison-table {
+    border-radius: $radius-lg;
+    overflow: hidden;
+	border: 0px;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+        margin-bottom: 0px;
+		border-width: 0px;
+
+        thead {
+            border-bottom: 1px solid $grey-200;
+            th {
+                padding: $space-4 $space-5;
+                font-weight: 700;
+                text-align: center;
+                border: none;
+                font-family: $font-display;
+
+                &:first-child {
+                    text-align: left;
+                    width: 40%;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:nth-child(even) {
+                    background: $grey-50;
+                }
+
+                &:hover {
+                    background: rgba($primary, 0.02);
+                }
+
+                td {
+                    padding: $space-4 $space-5;
+                    color: $grey-900;
+                    border: none;
+
+                    &:first-child {
+                        text-align: left;
+                        font-weight: 500;
+                    }
+
+                    &:not(:first-child) {
+                        text-align: center;
+                        color: $secondary;
+                        font-weight: 600;
+
+                        // Show muted for missing features
+                        &:contains('—') {
+                            color: $grey-300;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// FAQ SECTION
+// ============================================
+.faq-section {
+    background: $white;
+    padding: $space-24 0;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+}
+
+.faq-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $space-6;
+    color: $navy;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
+}
+
+.faq-item {
+    margin-bottom: $space-4;
+    border: 1px solid $grey-200;
+    border-radius: $radius-md;
+    overflow: hidden;
+    background: $white;
+
+    summary {
+        padding: $space-4 $space-5;
+        background: $white;
+        cursor: pointer;
+        font-weight: 600;
+        color: $grey-900;
+        @include flex-between;
+        user-select: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: $grey-50;
+            color: $primary;
+        }
+
+        &::marker {
+            display: none;
+        }
+
+        &::after {
+            content: '›';
+            font-size: 1.5rem;
+            color: $primary;
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+    }
+
+    &[open] {
+        // border-color: $primary;
+        background: rgba($primary, 0.02);
+
+        summary {
+            // border-bottom: 1px solid $grey-200;
+            background: rgba($primary, 0.02);
+            color: $primary;
+
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    p {
+        padding: $space-4 $space-5;
+        color: $grey-700;
+        line-height: 1.7;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+}
+
+// ============================================
+// CTA BANNER SECTION
+// ============================================
+.cta-banner {
+    background: linear-gradient(135deg, $navy 0%, $navy-light 100%);
+    color: $white;
+    padding: $space-24 0;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+}
+
+.cta-banner__eyebrow {
+    font-size: 0.875rem;
+    color: rgba($white, 0.8);
+    margin-bottom: $space-4;
+    font-weight: 500;
+}
+
+.cta-banner__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: $space-4;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.cta-banner__sub {
+    font-size: 1.125rem;
+    color: rgba($white, 0.9);
+    margin-bottom: $space-6;
+    line-height: 1.6;
+}
+
+// ============================================
+// BUTTON STYLES
+// ============================================
+.wp-block-buttons {
+    @include flex-center;
+    gap: $space-4;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+        @include flex-col;
+        width: 100%;
+
+        .wp-block-button {
+            width: 100%;
+        }
+    }
+}
+
+.btn-primary {
+    @include button-base;
+    background: $primary;
+    color: $white;
+
+    &:hover {
+        background: $primary-hover;
+        box-shadow: $shadow-lg;
+    }
+
+    .wp-block-button__link {
+        color: $white;
+        text-decoration: none;
+        display: 100%;
+        width: 100%;
+        font-weight: 600;
+    }
+}
+
+.btn-secondary {
+    @include button-base;
+    background: transparent;
+    color: $white;
+    border: 2px solid rgba($white, 0.4);
+
+    &:hover {
+        border-color: $white;
+        background: rgba($white, 0.1);
+    }
+
+    .wp-block-button__link {
+        color: $white;
+        text-decoration: none;
+        display: 100%;
+        width: 100%;
+        font-weight: 600;
+    }
+}
+
+// ============================================
+// GUTENBERG BLOCK ADJUSTMENTS
+// ============================================
+.wp-block-group {
+    &.container {
+        @include container;
+    }
+}
+
+.wp-block-column {
+    @include flex-col;
+}
+
+.wp-block-heading {
+    font-family: $font-display;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wp-block-table {
+    border-radius: $radius-lg;
+    overflow: hidden;
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: $grey-500;
+}
+
+.has-text-align-center {
+    text-align: center;
+}
+
+// ============================================
+// RESPONSIVE REFINEMENTS
+// ============================================
+@media (max-width: 1024px) {
+    .pricing-grid {
+        gap: $space-5;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero__title,
+    .cta-banner__title,
+    .comparison-title,
+    .faq-title {
+        font-size: 1.75rem;
+    }
+
+    .pricing-card {
+        padding: $space-4;
+
+        &--featured {
+            transform: scale(1);
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    .comparison-table {
+        table {
+            font-size: 0.875rem;
+
+            thead th,
+            tbody td {
+                padding: $space-3 $space-2;
+            }
+
+            thead th:first-child {
+                width: 50%;
+            }
+        }
+    }
+
+    .faq-item {
+        summary {
+            padding: $space-3 $space-4;
+            font-size: 0.95rem;
+        }
+
+        p {
+            padding: $space-3 $space-4;
+            font-size: 0.8125rem;
+        }
+    }
+
+    .wp-block-buttons {
+        flex-direction: column;
+
+        .wp-block-button {
+            width: 100%;
+        }
+    }
+}
+
+// ============================================
+// DARK MODE SUPPORT (Optional)
+// ============================================
+@media (prefers-color-scheme: dark) {
+    // Add dark mode styles if needed
+    // Example:
+    // .pricing-card {
+    //   background: rgba($white, 0.05);
+    //   border-color: rgba($white, 0.1);
+    // }
+}

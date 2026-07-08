@@ -88,31 +88,31 @@ function gssInit() {
     }
 
     // 4. FAQ accordion
-    const faqContainer = document.getElementById('faq');
-    if (faqContainer) {
-        faqContainer.addEventListener('click', (e) => {
-            const trigger = e.target.closest('.faq__trigger');
-            if (!trigger) return;
+    // const faqContainer = document.getElementById('faq');
+    // if (faqContainer) {
+    //     faqContainer.addEventListener('click', (e) => {
+    //         const trigger = e.target.closest('.faq__trigger');
+    //         if (!trigger) return;
 
-            const item = trigger.closest('.faq__item');
-            const body = item.querySelector('.faq__body');
-            const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+    //         const item = trigger.closest('.faq__item');
+    //         const body = item.querySelector('.faq__body');
+    //         const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-            // Collapse all siblings
-            faqContainer.querySelectorAll('.faq__item').forEach((sibling) => {
-                const sibTrigger = sibling.querySelector('.faq__trigger');
-                const sibBody = sibling.querySelector('.faq__body');
-                sibTrigger.setAttribute('aria-expanded', 'false');
-                sibBody.style.maxHeight = '0';
-            });
+    //         // Collapse all siblings
+    //         faqContainer.querySelectorAll('.faq__item').forEach((sibling) => {
+    //             const sibTrigger = sibling.querySelector('.faq__trigger');
+    //             const sibBody = sibling.querySelector('.faq__body');
+    //             sibTrigger.setAttribute('aria-expanded', 'false');
+    //             sibBody.style.maxHeight = '0';
+    //         });
 
-            // Open clicked if it was closed
-            if (!isOpen) {
-                trigger.setAttribute('aria-expanded', 'true');
-                body.style.maxHeight = body.scrollHeight + 'px';
-            }
-        });
-    }
+    //         // Open clicked if it was closed
+    //         if (!isOpen) {
+    //             trigger.setAttribute('aria-expanded', 'true');
+    //             body.style.maxHeight = body.scrollHeight + 'px';
+    //         }
+    //     });
+    // }
 
     // 5. Contact form validation
     const contactForm = document.getElementById('contact-form');
