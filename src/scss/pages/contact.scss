@@ -1,0 +1,544 @@
+@use '../variables' as *;
+
+// ============================================
+// CONTACT PAGE - COMPLETE STYLES
+// ============================================
+
+// ============================================
+// PAGE HERO SECTION
+// ============================================
+.page-hero {
+    background: linear-gradient(135deg, $navy 0%, $navy-light 100%);
+    color: $white;
+    padding: $space-24 0;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+}
+
+.page-hero .container {
+    @include container;
+}
+
+.page-hero__label {
+    @include tag-label($primary-light);
+    margin-bottom: $space-4;
+}
+
+.page-hero__title {
+    font-size: 2.5rem;
+    font-family: $font-display;
+    font-weight: 700;
+    margin: $space-4 0;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.page-hero__sub {
+    font-size: 1.125rem;
+    color: rgba($white, 0.9);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+// ============================================
+// CONTACT SECTION
+// ============================================
+.contact-section {
+    background: $white;
+    padding: $space-24 0;
+
+    @media (max-width: 768px) {
+        padding: $space-16 0;
+    }
+}
+
+.contact-section .container {
+    @include container;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-8;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: $space-12;
+    }
+}
+
+// ============================================
+// FORM STYLES
+// ============================================
+.contact-form__title {
+    font-size: 1.5rem;
+    font-family: $font-display;
+    font-weight: 800;
+    color: $navy;
+    margin: 0 0 $space-2 0;
+}
+
+.contact-form__subtitle {
+    font-size: 0.9375rem;
+    color: $grey-500;
+    margin: 0 0 $space-8 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+}
+
+.contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-6;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-form__group {
+    @include flex-col;
+    gap: $space-2;
+}
+
+.contact-form__group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $grey-900;
+    display: flex;
+    gap: $space-2;
+    align-items: center;
+
+    .required {
+        color: #ef4444;
+        font-weight: 700;
+    }
+
+    .optional {
+        color: $grey-500;
+        font-weight: 400;
+    }
+}
+
+.contact-form__group input,
+.contact-form__group select,
+.contact-form__group textarea {
+    padding: $space-3 $space-4;
+    border: 1px solid $grey-200;
+    border-radius: $radius-sm;
+    font-family: $font-ui;
+    font-size: 0.875rem;
+    color: $grey-900;
+    background: $white;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+        color: $grey-300;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    }
+
+    &:invalid:not(:placeholder-shown) {
+        border-color: #ef4444;
+    }
+}
+
+.contact-form__group textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+    font-family: $font-ui;
+}
+
+.contact-form__group select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23009bd1' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $space-3 center;
+    background-size: 20px;
+    padding-right: $space-10;
+}
+
+.contact-form__error {
+    font-size: 0.8125rem;
+    color: #ef4444;
+    display: none;
+    margin: 0;
+}
+
+.contact-form__group.has-error .contact-form__error {
+    display: block;
+}
+
+.contact-form__submit {
+    padding: $space-4 $space-6;
+    background: $primary;
+    color: $white;
+    border: none;
+    border-radius: $radius-pill;
+    font-family: $font-display;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    @include flex-center;
+    gap: $space-2;
+    margin-top: $space-2;
+
+    &:hover {
+        background: $primary-hover;
+        box-shadow: $shadow-lg;
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.contact-form__submit-arrow {
+    display: inline-block;
+    font-size: 1.1rem;
+}
+
+// ============================================
+// SUCCESS MESSAGE
+// ============================================
+.contact-success {
+    background: rgba($secondary, 0.1);
+    border: 1px solid rgba($secondary, 0.2);
+    border-radius: $radius-lg;
+    padding: $space-6;
+    text-align: center;
+    margin-bottom: $space-6;
+
+    &.is-hidden {
+        display: none;
+    }
+}
+
+.contact-success__icon {
+    font-size: 2.5rem;
+    color: $secondary;
+    margin: 0 0 $space-2 0;
+    line-height: 1;
+}
+
+.contact-success__title {
+    font-size: 1.25rem;
+    font-family: $font-display;
+    font-weight: 700;
+    color: $secondary;
+    margin: 0 0 $space-2 0;
+}
+
+.contact-success__body {
+    font-size: 0.875rem;
+    color: $grey-700;
+    line-height: 1.6;
+    margin: 0;
+}
+
+// ============================================
+// CONTACT DETAILS CARD
+// ============================================
+.contact-details__card {
+    background: $white;
+    border: 1px solid $grey-200;
+    border-radius: $radius-lg;
+    padding: $space-6;
+    margin-bottom: $space-6;
+    box-shadow: $shadow-sm;
+}
+
+.contact-details__title {
+    font-size: 1.125rem;
+    font-family: $font-display;
+    font-weight: 800;
+    color: $navy;
+    margin: 0 0 $space-8 0;
+}
+
+.contact-details__item {
+    @include flex-align;
+    gap: $space-4;
+    margin-bottom: $space-8;
+    padding: 0;
+    border: none;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    > div {
+        @include flex-col;
+        gap: $space-1;
+    }
+}
+
+.contact-details__item-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: rgba($secondary, 0.15);
+    border-radius: $radius-sm;
+    @include flex-center;
+    color: $secondary;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke: $secondary;
+        stroke-width: 2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+
+.contact-details__item-label {
+    @include tag-label($tertiary);
+    margin: 0;
+    display: block;
+}
+
+.contact-details__item-value {
+    font-size: 0.95rem;
+    color: $primary;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-word;
+
+    a {
+        color: $primary;
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: $primary-hover;
+            text-decoration: underline;
+        }
+    }
+}
+
+// ============================================
+// HIGHLIGHT BOX (LOCAL SUPPORT)
+// ============================================
+.contact-details__highlight {
+    background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($primary, 0.02) 100%);
+    border: 1px solid rgba($primary, 0.15);
+    border-radius: $radius-lg;
+    padding: $space-6;
+    margin-bottom: $space-6;
+}
+
+.contact-details__highlight-emoji {
+    font-size: 1.75rem;
+    margin: 0 0 $space-3 0;
+    line-height: 1;
+}
+
+.contact-details__highlight-title {
+    font-size: 0.9375rem;
+    font-family: $font-display;
+    font-weight: 700;
+    color: $grey-900;
+    margin: 0 0 $space-2 0;
+}
+
+.contact-details__highlight-text {
+    font-size: 0.875rem;
+    color: $grey-700;
+    line-height: 1.6;
+    margin: 0;
+}
+
+// ============================================
+// HELP BOX (NEED HELP RIGHT NOW)
+// ============================================
+.contact-details__help {
+    background: $grey-50;
+    border: 1px solid $grey-200;
+    border-radius: $radius-lg;
+    padding: $space-6;
+}
+
+.contact-details__help-title {
+    font-size: 0.9375rem;
+    font-family: $font-display;
+    font-weight: 700;
+    color: $grey-900;
+    margin: 0 0 $space-3 0;
+}
+
+.contact-details__help-text {
+    font-size: 0.875rem;
+    color: $grey-500;
+    line-height: 1.6;
+    margin: 0 0 $space-4 0;
+}
+
+.contact-details__help-btn {
+    width: 100%;
+    margin-bottom: $space-3;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .wp-block-button__link {
+        @include flex-align;
+        justify-content: center;
+        gap: $space-2;
+        padding: $space-3 $space-4;
+        background: $white;
+        color: $grey-900;
+        border: 1px solid $grey-200;
+        border-radius: $radius-sm;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        width: 100%;
+        display: flex;
+
+        &:hover {
+            background: $grey-100;
+            border-color: $grey-300;
+        }
+    }
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+.is-hidden {
+    display: none !important;
+}
+
+.required {
+    color: #ef4444;
+}
+
+.optional {
+    color: $grey-500;
+    font-weight: 400;
+}
+
+// ============================================
+// RESPONSIVE DESIGN
+// ============================================
+@media (max-width: 1024px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: $space-12;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: $space-16 0;
+    }
+
+    .page-hero__title {
+        font-size: 2rem;
+    }
+
+    .page-hero__sub {
+        font-size: 1rem;
+    }
+
+    .contact-section {
+        padding: $space-16 0;
+    }
+
+    .contact-form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form__title {
+        font-size: 1.25rem;
+    }
+
+    .contact-form__group input,
+    .contact-form__group select,
+    .contact-form__group textarea {
+        font-size: 16px; // Prevents zoom on iOS
+    }
+
+    .contact-details__card,
+    .contact-details__highlight,
+    .contact-details__help {
+        padding: $space-5;
+        margin-bottom: $space-4;
+    }
+
+    .contact-details__title {
+        font-size: 1rem;
+        margin-bottom: $space-6;
+    }
+
+    .contact-details__item {
+        gap: $space-3;
+        margin-bottom: $space-6;
+    }
+
+    .contact-details__item-icon {
+        width: 36px;
+        height: 36px;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    .contact-details__item-value {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero {
+        padding: $space-12 0;
+    }
+
+    .page-hero__title {
+        font-size: 1.5rem;
+    }
+
+    .contact-form__title {
+        font-size: 1.125rem;
+    }
+
+    .contact-form__submit {
+        width: 100%;
+    }
+
+    .contact-details__title {
+        font-size: 0.95rem;
+    }
+
+    .contact-details__highlight-emoji {
+        font-size: 1.5rem;
+    }
+}
