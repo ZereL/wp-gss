@@ -1,6 +1,6 @@
 @use '../variables' as *;
 
-// ─── 10. Hero ─────────────────────────────────────────────────
+// ─── Hero ─────────────────────────────────────────────────
 .hero {
     background-image: linear-gradient(
         180deg,
@@ -132,7 +132,7 @@
     }
 }
 
-// ─── 11. Dashboard Mockup ─────────────────────────────────────
+// ─── Dashboard Mockup ─────────────────────────────────────
 .hero__mockup {
     width: 100%;
     max-width: 520px;
@@ -257,7 +257,7 @@
     }
 }
 
-// ─── 12. Social Proof Bar ─────────────────────────────────────
+// ─── Social Proof Bar ─────────────────────────────────────
 .proof-bar {
     background: var(--white);
     border-bottom: 1px solid var(--grey-200);
@@ -295,7 +295,7 @@
     }
 }
 
-// ─── 13. Pillars ──────────────────────────────────────────────
+// ─── Pillars ──────────────────────────────────────────────
 .pillars__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -363,7 +363,7 @@
     }
 }
 
-// ─── 14. Features Grid ────────────────────────────────────────
+// ─── Features Grid ────────────────────────────────────────
 .features__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -396,7 +396,7 @@
     }
 }
 
-// ─── 15. Logo Strip ───────────────────────────────────────────
+// ─── Logo Strip ───────────────────────────────────────────
 .logo-strip-section {
     background: var(--grey-50);
     padding-block: var(--space-12);
@@ -482,7 +482,7 @@
     }
 }
 
-/* 15. Shipping Journey
+/* Shipping Journey
    ============================================================= */
 .journey {
     background: var(--white);
@@ -929,7 +929,7 @@
     }
 }
 
-// ─── 16. Comparison ───────────────────────────────────────────
+// ─── Comparison ───────────────────────────────────────────
 .comparison {
     &__layout {
         display: grid;
@@ -1055,7 +1055,7 @@
     }
 }
 
-// ─── 17. Testimonials ─────────────────────────────────────────
+// ─── Testimonials ─────────────────────────────────────────
 .testimonials__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1130,7 +1130,7 @@
     }
 }
 
-// ─── 18. CTA Banner ───────────────────────────────────────────
+// ─── CTA Banner ───────────────────────────────────────────
 .cta-banner {
     background: var(--navy);
     padding-block: var(--space-20);
@@ -1171,7 +1171,7 @@
     }
 }
 
-// ─── 22. Contact Form ─────────────────────────────────────────
+// ─── Contact Form ─────────────────────────────────────────
 .contact-layout {
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -1480,376 +1480,4 @@
     .proof-bar__grid {
         grid-template-columns: 1fr 1fr;
     }
-}
-// ============================================
-// Courier Enquiry Form - Styling
-// For Ninja Forms - Corrected Selectors
-// ============================================
-
-// ─── FORM TITLE ───────────────────────────
-.nf-form-title {
-    h3 {
-        font-size: 1.875rem;
-        font-weight: 700;
-        color: $grey-900;
-        margin-bottom: $space-8;
-        letter-spacing: -0.5px;
-        font-family: $font-display;
-    }
-}
-
-// ─── FORM LAYOUT ──────────────────────────
-.nf-form-layout {
-    form {
-        @include flex-col;
-        gap: $space-6;
-    }
-}
-
-// ─── FIELDS REQUIRED MESSAGE ──────────────
-.nf-form-fields-required {
-    font-size: 0.8125rem;
-    color: $grey-500;
-    margin-bottom: $space-6;
-    padding: $space-4;
-    background: $grey-50;
-    border-radius: $radius-sm;
-    border-left: 3px solid $orange;
-    font-family: $font-ui;
-
-    .ninja-forms-req-symbol {
-        color: $orange;
-        font-weight: 700;
-    }
-}
-
-// ─── FIELD CONTAINER (All Fields) ─────────
-.nf-field-container {
-    display: flex;
-    flex-direction: column;
-    gap: $space-2;
-    margin-bottom: $space-6;
-
-    // Two-column layout for first 4 fields
-    &.textbox-container,
-    &.phone-container,
-    &.email-container {
-        grid-column: span 1;
-    }
-}
-
-// ─── FIELD LABELS ──────────────────────────
-.nf-field-label {
-    label,
-    .nf-label-span {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: $grey-900;
-        letter-spacing: 0.3px;
-        font-family: $font-ui;
-        margin-bottom: $space-2;
-        display: block;
-
-        .ninja-forms-req-symbol {
-            color: $orange;
-            margin-left: $space-1;
-            font-weight: 700;
-        }
-
-        .fa-info-circle {
-            margin-left: $space-2;
-            color: $primary;
-            cursor: help;
-            transition: all 0.2s ease;
-
-            &:hover {
-                transform: scale(1.1);
-            }
-        }
-    }
-}
-
-// ─── FIELD WRAPS (Individual Field Styling) ──
-.field-wrap {
-    @include flex-col;
-    gap: $space-3;
-}
-
-// ─── TEXT INPUTS ──────────────────────────
-.textbox-wrap,
-.phone-wrap,
-.email-wrap,
-.textarea-wrap,
-.list-select-wrap {
-    input[type='text'],
-    input[type='email'],
-    input[type='tel'],
-    input[type='number'],
-    textarea,
-    select {
-        width: 100%;
-        padding: $space-3 $space-4;
-        border: 1px solid $grey-300;
-        border-radius: $radius-sm;
-        font-size: 0.875rem;
-        color: $grey-900;
-        background-color: $white;
-        font-family: $font-ui;
-        transition:
-            border-color 0.2s,
-            box-shadow 0.2s,
-            background-color 0.2s;
-
-        &::placeholder {
-            color: $grey-500;
-            opacity: 0.7;
-        }
-
-        &:focus {
-            outline: none;
-            border-color: $primary;
-            box-shadow: 0 0 0 3px rgba($primary, 0.1);
-            background-color: $grey-50;
-        }
-
-        &:hover:not(:focus) {
-            border-color: $grey-500;
-        }
-
-        &:disabled {
-            background-color: $grey-100;
-            color: $grey-500;
-            cursor: not-allowed;
-        }
-    }
-
-    // Textarea specific
-    textarea {
-        min-height: 120px;
-        resize: vertical;
-        line-height: 1.5;
-    }
-
-    // Select dropdown
-    select {
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right $space-3 center;
-        background-size: 20px;
-        padding-right: 36px;
-    }
-}
-
-// ─── CHECKBOXES & RADIO BUTTONS ───────────
-.list-checkbox-wrap {
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: $space-4;
-
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-        }
-
-        li {
-            @include flex-align;
-            gap: $space-3;
-            margin-bottom: 0;
-
-            input[type='checkbox'] {
-                width: 18px;
-                height: 18px;
-                cursor: pointer;
-                accent-color: $primary;
-                flex-shrink: 0;
-                transition: all 0.2s ease;
-
-                &:focus {
-                    outline: 2px solid $primary;
-                    outline-offset: 2px;
-                }
-
-                &:hover {
-                    transform: scale(1.05);
-                }
-            }
-
-            label {
-                font-size: 0.875rem;
-                color: $grey-900;
-                cursor: pointer;
-                margin: 0;
-                font-weight: 500;
-                font-family: $font-ui;
-                user-select: none;
-
-                &:hover {
-                    color: $primary;
-                }
-            }
-        }
-    }
-}
-
-// ─── SELECT DROPDOWN ───────────────────────
-.list-select-wrap {
-    select {
-        padding: $space-3 $space-4;
-        padding-right: 36px;
-    }
-}
-
-// ─── SUBMIT BUTTON ────────────────────────
-.submit-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: $space-3;
-    margin-top: $space-8;
-    padding-top: $space-8;
-    border-top: 1px solid $grey-200;
-
-    input[type='submit'] {
-        background: linear-gradient(135deg, $primary 0%, $primary-hover 100%);
-        color: $white;
-        border: none;
-        padding: $space-3 $space-8;
-        border-radius: $radius-pill;
-        font-size: 0.9375rem;
-        font-weight: 600;
-        cursor: pointer;
-        @include flex-center;
-        gap: $space-2;
-        box-shadow: $shadow-md;
-        font-family: $font-ui;
-        letter-spacing: 0.3px;
-        transition: all 0.3s ease;
-        align-self: flex-start;
-
-        &:hover:not(:disabled) {
-            background: linear-gradient(135deg, #005a7a 0%, #004560 100%);
-            box-shadow: $shadow-lg;
-            transform: translateY(-2px);
-        }
-
-        &:active:not(:disabled) {
-            transform: translateY(0);
-            box-shadow: $shadow-sm;
-        }
-
-        &:focus {
-            outline: 2px solid $primary;
-            outline-offset: 2px;
-        }
-
-        &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-    }
-
-    @media (max-width: 768px) {
-        input[type='submit'] {
-            width: 100%;
-            align-self: stretch;
-        }
-    }
-}
-
-
-// ─── HELP TEXT ────────────────────────────
-.nf-help-text,
-.nf-sr-only {
-    font-size: 0.8125rem;
-    color: $grey-500;
-    font-style: italic;
-    margin-top: $space-2;
-    font-family: $font-ui;
-}
-
-.nf-sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-// ─── ACCESSIBILITY ────────────────────────
-input,
-textarea,
-select {
-    &:focus-visible {
-        outline: 2px solid $primary;
-        outline-offset: 2px;
-    }
-}
-
-
-// ─── RESPONSIVE ADJUSTMENTS ───────────────
-@media (max-width: 768px) {
-    #nf-form-6-cont {
-        .nf-form-wrap {
-            padding: $space-6;
-            border-radius: $radius-md;
-        }
-    }
-
-    .nf-form-title h3 {
-        font-size: 1.5rem;
-    }
-
-    .nf-form-content {
-        grid-template-columns: 1fr;
-        gap: $space-4;
-    }
-
-    .nf-field-container {
-        margin-bottom: 0;
-    }
-}
-
-// ─── LOADING STATE ────────────────────────
-.nf-form-layout.nf-form-loading {
-    opacity: 0.6;
-    pointer-events: none;
-
-    input[type='submit'] {
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            top: 50%;
-            right: $space-3;
-            margin-top: -8px;
-            border: 2px solid rgba($white, 0.3);
-            border-radius: 50%;
-            border-top-color: $white;
-            animation: spin 0.8s linear infinite;
-        }
-    }
-}
-
-// Loading animation
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-// ─── HONEYPOT (Hidden) ────────────────────
-.nf-form-hp {
-    display: none !important;
 }

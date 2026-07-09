@@ -189,6 +189,9 @@
 .story-stat-year.story-stat-green {
     color: $secondary;
 }
+.story-stat-year.story-stat-blue {
+    color: $primary;
+}
 
 .story-stat-label {
     font-size: 0.8125rem;
@@ -251,7 +254,7 @@
 
 .friction-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    grid-template-columns: 1fr !important;
     gap: $space-6 !important;
     margin-top: $space-10;
     text-align: left;
@@ -355,7 +358,6 @@
         &__link {
             font-weight: 600;
             padding: $space-4 $space-6;
-            border-radius: $radius-md;
             transition: all 0.2s ease;
 
             &:hover {

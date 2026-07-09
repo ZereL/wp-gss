@@ -80,8 +80,8 @@ add_action( 'generate_footer_right', 'generate_child_footer_right' );
 function generate_child_footer_right() {
     ?>
     <div class="footer-links">
-        <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>">Privacy Policy</a>
-        <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>">Terms of Service</a>
+        <a href="<?php echo esc_url( home_url( '/privacypolicy' ) ); ?>">Privacy Policy</a>
+        <a href="<?php echo esc_url( home_url( '/termsoftrade-australia' ) ); ?>">Terms of Service</a>
     </div>
     <?php
 }
