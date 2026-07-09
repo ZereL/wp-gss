@@ -13,6 +13,7 @@ export default defineConfig({
                 home: resolve(__dirname, 'src/js/pages/home.js'),
                 contact: resolve(__dirname, 'src/js/pages/contact.js'),
                 pricing: resolve(__dirname, 'src/js/pages/pricing.js'),
+                about: resolve(__dirname, 'src/js/pages/about.js'),
             },
             output: {
                 entryFileNames: 'js/[name].js',
