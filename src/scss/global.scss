@@ -388,6 +388,10 @@ $spacing-properties: (
         height: 43px;
         width: auto;
         display: block;
+
+        @include mobile() {
+            height: 18px;
+        }
     }
 }
 
@@ -402,7 +406,7 @@ $spacing-properties: (
 
     // Navigation menu
     #primary-menu {
-        display: flex;
+        // display: flex;
         align-items: center;
         gap: 0.25rem;
         list-style: none;
@@ -529,6 +533,10 @@ $spacing-properties: (
     cursor: pointer;
     transition: background 0.15s;
 
+    @include mobile() {
+        line-height: 1;
+    }
+
     &:hover {
         background: rgba($white, 0.1);
     }
@@ -540,91 +548,662 @@ $spacing-properties: (
     }
 }
 
-// Mobile drawer (hidden by default)
-.mobile-menu-control-wrapper + .main-navigation .main-nav {
-    display: flex;
+// ─────────────────────────────────────────────────────────────
+// SINGLE @MOBILE MIXIN DEFINITION
+// ─────────────────────────────────────────────────────────────
 
-    @media (max-width: 768px) {
-        display: none;
-        position: fixed;
-        inset: 0;
-        top: 70px;
-        background: $primary;
-        padding: 1.5rem;
-        flex-direction: column;
-        gap: 1rem;
-        z-index: 99;
-        border-top: 1px solid rgba($white, 0.1);
+@include mobile {
+    // ─────────────────────────────────────────────────────────────
+    // GENERATEPRESS HEADER - MOBILE MENU WITH REORDERED BUTTONS
+    // ─────────────────────────────────────────────────────────────
 
-        &.open {
-            display: flex;
+    // ─── INSIDE HEADER WRAPPER ────────────────────────────────────
+    .inside-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $space-4;
+        padding: $space-3 $space-6;
+
+        @include mobile {
+            padding: $space-3 $space-4;
+            gap: $space-2;
         }
 
-        #primary-menu {
-            flex-direction: column;
-            gap: 0;
-            width: 100%;
+        // Logo/Site Branding
+        .site-branding {
+            flex: 1;
+            min-width: 120px;
+            order: 1;
+        }
 
-            > li {
-                width: 100%;
+        // Header widgets (Login/Start Free buttons)
+        .header-widget {
+            flex: 0 0 auto;
+            order: 3;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: $space-3;
 
-                > a {
-                    display: block;
-                    width: 100%;
-                    font-size: 1.1rem;
-                    padding: 0.75rem 1rem;
-                }
+            @include mobile {
+                order: 2; // Before hamburger on mobile
+                flex: 0 0 auto;
+                margin-top: 0;
+                gap: $space-2;
             }
         }
 
-        .sub-menu {
+        // Menu toggle (hamburger)
+        .menu-toggle {
+            order: 4;
+
+            @include mobile {
+                order: 3; // After header widgets on mobile
+            }
+        }
+    }
+
+    // ─── MENU TOGGLE BUTTON (HAMBURGER) ──────────────────────────
+    .menu-toggle {
+        display: none;
+        color: $white;
+        background: none;
+        border: none;
+        padding: $space-2;
+        border-radius: $radius-sm;
+        cursor: pointer;
+        transition:
+            background 0.15s ease,
+            transform 0.2s ease;
+        line-height: 1;
+        @include flex-center;
+        gap: $space-2;
+        position: relative;
+        z-index: 100;
+
+        @include mobile {
+            display: flex;
+            padding: $space-2 $space-3;
+        }
+
+        &:hover {
+            background: rgba($white, 0.1);
+            transform: scale(1.05);
+        }
+
+        &:focus {
+            outline: 2px solid $primary-light;
+            outline-offset: 2px;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+            stroke: currentColor;
+            fill: currentColor;
+            transition: all 0.3s ease;
+        }
+
+        // First SVG (hamburger icon)
+        .gp-icon svg:first-child {
+            display: block;
+        }
+
+        // Second SVG (close/X icon)
+        .gp-icon svg:last-child {
+            display: none;
+        }
+
+        // When menu is open, swap icons
+        &[aria-expanded='true'] {
+            .gp-icon svg:first-child {
+                display: none;
+            }
+
+            .gp-icon svg:last-child {
+                display: block;
+            }
+        }
+
+        .mobile-menu {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: $font-ui;
+            letter-spacing: 0.5px;
+
+            @include mobile {
+                display: block;
+            }
+        }
+    }
+
+    // ─── PRIMARY NAVIGATION MENU ──────────────────────────────────
+    #site-navigation {
+        &.main-navigation {
+            position: relative;
+            z-index: 98;
+
+            &.toggled {
+                #primary-menu {
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    // ─── PRIMARY MENU (Drawer on Mobile) ──────────────────────────
+    #primary-menu {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-direction: row;
+
+        @include mobile {
+            display: none;
+            position: fixed;
+            inset: 0;
+            top: var(--nav-h, 70px); // Adjust based on your header height
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $primary;
+            flex-direction: column;
+            gap: 0;
+            padding: $space-6;
+            margin: 0;
+            z-index: 99;
+            border-top: 1px solid rgba($white, 0.1);
+            overflow-y: auto;
+            max-height: calc(100vh - var(--nav-h, 70px));
+            width: 100%;
+            border-radius: 0;
+            animation: slideInUp 0.3s ease-out;
+
+            &.toggled {
+                display: flex;
+            }
+        }
+
+        #menu-primary-menu,
+        &.sf-menu,
+        &.menu {
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+            @include mobile {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            > li {
+                width: auto;
+                margin: 0;
+                padding: 0;
+                border: none;
+
+                @include mobile {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    border-bottom: 1px solid rgba($white, 0.1);
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+
+                > a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: $space-3 $space-4;
+                    color: $white;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    font-family: $font-ui;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                    gap: $space-2;
+
+                    @include mobile {
+                        width: 100%;
+                        padding: $space-4;
+                        font-size: 1.0625rem;
+
+                        &:hover {
+                            background: rgba($white, 0.08);
+                            padding-left: $space-5;
+                        }
+
+                        &:active {
+                            background: rgba($white, 0.12);
+                        }
+                    }
+
+                    &:hover {
+                        color: $primary-light;
+                    }
+
+                    &.current {
+                        @include mobile {
+                            background: rgba($primary-light, 0.2);
+                            color: $primary-light;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // ─── SUBMENU (Nested Items) ───────────────────────────────────
+    .sub-menu {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        background: $white;
+        border: 1px solid $grey-200;
+        border-radius: $radius-sm;
+        box-shadow: $shadow-md;
+        padding: $space-3;
+        margin-top: $space-2;
+        min-width: 200px;
+        list-style: none;
+        transition: all 0.2s ease;
+
+        @include mobile {
             position: static;
             opacity: 1;
             visibility: visible;
             transform: none;
             background: rgba($white, 0.06);
             border: none;
+            border-left: 3px solid $primary-light;
             box-shadow: none;
-            padding: 0.25rem 0.5rem;
-            margin-top: 0.25rem;
+            padding: 0;
+            margin: 0;
+            min-width: auto;
+            border-radius: 0;
+            animation: none;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
             width: 100%;
 
-            li a {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.9rem;
+            @include mobile {
+                border: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            a {
+                display: block;
+                padding: $space-2 $space-3;
+                color: $grey-900;
+                font-size: 0.875rem;
+                font-weight: 500;
+                font-family: $font-ui;
+                text-decoration: none;
+                transition: all 0.2s ease;
+
+                @include mobile {
+                    padding: $space-3 $space-4 $space-3 $space-6;
+                    color: rgba($white, 0.85);
+                    font-size: 0.9375rem;
+
+                    &:hover {
+                        background: rgba($white, 0.08);
+                        color: $white;
+                        padding-left: $space-8;
+                    }
+
+                    &.current {
+                        color: $primary-light;
+                        background: rgba($primary-light, 0.1);
+                    }
+                }
+
+                &:hover {
+                    color: $primary;
+                    background: $grey-50;
+                    padding-left: $space-4;
+                }
+            }
+
+            &:hover > .sub-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    // ─── DROPDOWN TOGGLE BUTTON ───────────────────────────────────
+    .dropdown-menu-toggle {
+        display: inline-flex;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: $space-2;
+        color: inherit;
+        font-size: 0.75rem;
+        margin-left: $space-1;
+        transition: all 0.2s ease;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        line-height: 1;
+
+        @include mobile {
+            display: none;
+        }
+
+        &[aria-expanded='true'] {
+            transform: rotate(180deg);
+        }
+
+        .gp-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                stroke: currentColor;
+                fill: currentColor;
             }
         }
 
-        .dropdown-menu-toggle {
-            display: none;
+        &:hover {
+            color: $primary;
+            transform: scale(1.1);
+        }
+
+        &:focus {
+            outline: 2px solid $primary;
+            outline-offset: 2px;
         }
     }
-}
 
-// Action buttons (login/signup)
-.has-inline-mobile-toggle {
-    .inside-header {
-        justify-content: space-between;
+    // ─── MENU ITEM STYLING ────────────────────────────────────────
+    .menu-item {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        &.menu-item-has-children {
+            position: relative;
+
+            > a {
+                @include flex-between;
+                gap: $space-2;
+            }
+        }
+
+        &.current-menu-item,
+        &.current_page_item {
+            > a {
+                color: $primary;
+                font-weight: 600;
+            }
+        }
+
+        &.current-menu-parent {
+            > a {
+                color: $primary-light;
+            }
+        }
     }
-}
 
-// Show menu toggle on mobile
-@media (max-width: 768px) {
-    .menu-toggle {
+    // ─── HEADER WIDGETS (Buttons Area) ────────────────────────────
+    .header-widget {
         display: flex;
         align-items: center;
-        justify-content: center;
+        gap: $space-3;
+        margin-top: 0;
+
+        @include mobile {
+            order: 2;
+            gap: $space-2;
+        }
+
+        // Button styling within header
+        a,
+        button {
+            @include flex-center;
+            gap: $space-2;
+            padding: $space-2 $space-4;
+            border-radius: $radius-pill;
+            font-size: 0.875rem;
+            font-weight: 600;
+            font-family: $font-ui;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+
+            @include mobile {
+                padding: $space-2 $space-3;
+                font-size: 0.8125rem;
+            }
+
+            &:focus {
+                outline: 2px solid $primary-light;
+                outline-offset: 2px;
+            }
+
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+
+        // Login button (outlined/secondary)
+        .login-btn,
+        .btn-secondary {
+            background: transparent;
+            color: $white;
+            border: 1.5px solid rgba($white, 0.5);
+
+            &:hover {
+                border-color: $white;
+                background: rgba($white, 0.08);
+            }
+        }
+
+        // Start Free button (primary)
+        .start-free-btn,
+        .btn-primary {
+            background: $secondary;
+            color: $white;
+            border: none;
+
+            &:hover {
+                background: $secondary-hover;
+                transform: translateY(-2px);
+                box-shadow: $shadow-md;
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
     }
 
-    .main-navigation.sub-menu-right {
-        flex: 0;
+    // ─── ANIMATIONS ───────────────────────────────────────────────
+    @keyframes slideInUp {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
-    .main-nav {
-        display: none;
+    @keyframes slideOutUp {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+    }
 
-        &.open {
-            display: flex;
+    // ─── ACCESSIBILITY ────────────────────────────────────────────
+    // Reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+
+    // Keyboard navigation
+    #site-navigation {
+        .menu-toggle,
+        .menu-item > a,
+        .dropdown-menu-toggle,
+        .header-widget a {
+            &:focus-visible {
+                outline: 2px solid $primary-light;
+                outline-offset: 2px;
+            }
+        }
+    }
+
+    // ─── DARK MODE SUPPORT ────────────────────────────────────────
+    @media (prefers-color-scheme: dark) {
+        #primary-menu {
+            @include mobile {
+                background: $navy;
+                border-top-color: rgba($white, 0.1);
+
+                > li {
+                    border-bottom-color: rgba($white, 0.1);
+
+                    > a {
+                        color: $white;
+
+                        &:hover {
+                            background: rgba($white, 0.08);
+                        }
+
+                        &.current {
+                            background: rgba($primary-light, 0.2);
+                            color: $primary-light;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sub-menu {
+            @include mobile {
+                background: rgba($white, 0.05);
+                border-left-color: $primary-light;
+
+                li a {
+                    color: rgba($white, 0.85);
+
+                    &:hover {
+                        background: rgba($white, 0.08);
+                        color: $white;
+                    }
+
+                    &.current {
+                        color: $primary-light;
+                        background: rgba($primary-light, 0.1);
+                    }
+                }
+            }
+
+            li a {
+                color: $grey-900;
+
+                &:hover {
+                    background: $grey-100;
+                    color: $primary;
+                }
+            }
+        }
+
+        .menu-toggle {
+            color: $white;
+
+            &:hover {
+                background: rgba($white, 0.1);
+                color: $primary-light;
+            }
+        }
+
+        .header-widget {
+            .login-btn,
+            .btn-secondary {
+                border-color: rgba($white, 0.5);
+                color: $white;
+
+                &:hover {
+                    background: rgba($white, 0.1);
+                    border-color: $white;
+                }
+            }
+        }
+    }
+
+    // ─── TOUCH DEVICE OPTIMIZATION ────────────────────────────────
+    @media (hover: none) and (pointer: coarse) {
+        .menu-toggle,
+        .header-widget a,
+        .dropdown-menu-toggle {
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        #primary-menu {
+            @include mobile {
+                li > a {
+                    min-height: 48px;
+                    padding: $space-4;
+                }
+            }
+        }
+    }
+
+    // ─── PRINT STYLES ─────────────────────────────────────────────
+    @media print {
+        .menu-toggle,
+        #site-navigation {
+            @include mobile {
+                display: none !important;
+            }
         }
     }
 }
@@ -1108,11 +1687,9 @@ select {
 
 // ─── RESPONSIVE ADJUSTMENTS ───────────────
 @media (max-width: 768px) {
-    #nf-form-6-cont {
-        .nf-form-wrap {
-            padding: $space-6;
-            border-radius: $radius-md;
-        }
+    .nf-form-wrap {
+        padding: $space-2;
+        border-radius: $radius-md;
     }
 
     .nf-form-title h3 {

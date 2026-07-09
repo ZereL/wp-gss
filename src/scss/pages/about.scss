@@ -142,6 +142,9 @@
     > .wp-block-group__inner-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        @include mobile {
+            grid-template-columns: auto;
+        }
         gap: $space-12;
         align-items: center;
     }

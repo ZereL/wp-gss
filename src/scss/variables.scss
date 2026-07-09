@@ -162,6 +162,41 @@ $nav-h: 68px;
     color: $color;
 }
 
+@mixin pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: $space-1 $space-3;
+    border-radius: $radius-pill;
+}
+
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-ui;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+// Mobile breakpoint mixin
+@mixin mobile($max: 768px) {
+    @media (max-width: $max) {
+        @content;
+    }
+}
+
 // ─── 4. Placeholders ──────────────────────────────────────────
 %reset-base {
     *,

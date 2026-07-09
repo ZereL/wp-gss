@@ -368,6 +368,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+    @include mobile {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 }
 
 .feature-item {
@@ -953,6 +956,9 @@
         overflow: hidden;
         font-size: 0.875rem;
         margin-bottom: 0px;
+        @include mobile {
+            table-layout: auto;
+        }
     }
 
     &__th {
@@ -1187,6 +1193,9 @@
     border-radius: var(--radius-xl);
     padding: var(--space-10);
     box-shadow: var(--shadow-md);
+    @include mobile {
+        padding: var(--space-2);
+    }
 }
 
 .hc-checkboxes {
@@ -1412,7 +1421,8 @@
 
     // Proof bar
     .proof-bar__grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     // Grids → single column
