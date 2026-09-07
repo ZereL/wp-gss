@@ -389,7 +389,7 @@ $spacing-properties: (
         width: auto;
         display: block;
 
-        @include mobile() {
+        @include media-breakpoint-down(sm) {
             height: 18px;
         }
     }
@@ -533,7 +533,7 @@ $spacing-properties: (
     cursor: pointer;
     transition: background 0.15s;
 
-    @include mobile() {
+    @include media-breakpoint-down(sm) {
         line-height: 1;
     }
 
@@ -552,7 +552,7 @@ $spacing-properties: (
 // SINGLE @MOBILE MIXIN DEFINITION
 // ─────────────────────────────────────────────────────────────
 
-@include mobile {
+@include media-breakpoint-down(sm) {
     // ─────────────────────────────────────────────────────────────
     // GENERATEPRESS HEADER - MOBILE MENU WITH REORDERED BUTTONS
     // ─────────────────────────────────────────────────────────────
@@ -565,7 +565,7 @@ $spacing-properties: (
         gap: $space-4;
         padding: $space-3 $space-6;
 
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             padding: $space-3 $space-4;
             gap: $space-2;
         }
@@ -586,7 +586,7 @@ $spacing-properties: (
             align-items: center;
             gap: $space-3;
 
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 order: 2; // Before hamburger on mobile
                 flex: 0 0 auto;
                 margin-top: 0;
@@ -598,7 +598,7 @@ $spacing-properties: (
         .menu-toggle {
             order: 4;
 
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 order: 3; // After header widgets on mobile
             }
         }
@@ -622,7 +622,7 @@ $spacing-properties: (
         position: relative;
         z-index: 100;
 
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             display: flex;
             padding: $space-2 $space-3;
         }
@@ -678,7 +678,7 @@ $spacing-properties: (
             font-family: $font-ui;
             letter-spacing: 0.5px;
 
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 display: block;
             }
         }
@@ -708,7 +708,7 @@ $spacing-properties: (
         padding: 0;
         flex-direction: row;
 
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             display: none;
             position: fixed;
             inset: 0;
@@ -745,7 +745,7 @@ $spacing-properties: (
             padding: 0;
             width: 100%;
 
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 flex-direction: column;
                 gap: 0;
             }
@@ -756,7 +756,7 @@ $spacing-properties: (
                 padding: 0;
                 border: none;
 
-                @include mobile {
+                @include media-breakpoint-down(sm) {
                     width: 100%;
                     margin: 0;
                     padding: 0;
@@ -780,7 +780,7 @@ $spacing-properties: (
                     transition: all 0.2s ease;
                     gap: $space-2;
 
-                    @include mobile {
+                    @include media-breakpoint-down(sm) {
                         width: 100%;
                         padding: $space-4;
                         font-size: 1.0625rem;
@@ -800,7 +800,7 @@ $spacing-properties: (
                     }
 
                     &.current {
-                        @include mobile {
+                        @include media-breakpoint-down(sm) {
                             background: rgba($primary-light, 0.2);
                             color: $primary-light;
                         }
@@ -826,7 +826,7 @@ $spacing-properties: (
         list-style: none;
         transition: all 0.2s ease;
 
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             position: static;
             opacity: 1;
             visibility: visible;
@@ -848,7 +848,7 @@ $spacing-properties: (
             list-style: none;
             width: 100%;
 
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 border: none;
                 margin: 0;
                 padding: 0;
@@ -865,7 +865,7 @@ $spacing-properties: (
                 text-decoration: none;
                 transition: all 0.2s ease;
 
-                @include mobile {
+                @include media-breakpoint-down(sm) {
                     padding: $space-3 $space-4 $space-3 $space-6;
                     color: rgba($white, 0.85);
                     font-size: 0.9375rem;
@@ -914,7 +914,7 @@ $spacing-properties: (
         height: 24px;
         line-height: 1;
 
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             display: none;
         }
 
@@ -986,7 +986,7 @@ $spacing-properties: (
         gap: $space-3;
         margin-top: 0;
 
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             order: 2;
             gap: $space-2;
         }
@@ -1007,7 +1007,7 @@ $spacing-properties: (
             border: none;
             white-space: nowrap;
 
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 padding: $space-2 $space-3;
                 font-size: 0.8125rem;
             }
@@ -1102,7 +1102,7 @@ $spacing-properties: (
     // ─── DARK MODE SUPPORT ────────────────────────────────────────
     @media (prefers-color-scheme: dark) {
         #primary-menu {
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 background: $navy;
                 border-top-color: rgba($white, 0.1);
 
@@ -1126,7 +1126,7 @@ $spacing-properties: (
         }
 
         .sub-menu {
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 background: rgba($white, 0.05);
                 border-left-color: $primary-light;
 
@@ -1188,7 +1188,7 @@ $spacing-properties: (
         }
 
         #primary-menu {
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 li > a {
                     min-height: 48px;
                     padding: $space-4;
@@ -1201,7 +1201,7 @@ $spacing-properties: (
     @media print {
         .menu-toggle,
         #site-navigation {
-            @include mobile {
+            @include media-breakpoint-down(sm) {
                 display: none !important;
             }
         }

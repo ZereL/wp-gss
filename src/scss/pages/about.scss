@@ -142,7 +142,7 @@
     > .wp-block-group__inner-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        @include mobile {
+        @include media-breakpoint-down(sm) {
             grid-template-columns: auto;
         }
         gap: $space-12;

@@ -1,3 +1,7 @@
+// Re-export the Bootstrap-style responsive mixins so every file that does
+// `@use 'variables' as *` also gets media-breakpoint-up / -down / -between / -only.
+@forward 'breakpoints';
+
 // ─── 1. SCSS Variables (mirrors CSS custom properties) ────────
 $primary: #009bd1;
 $primary-light: #33b8e8;
@@ -187,13 +191,6 @@ $nav-h: 68px;
 
     &:hover {
         transform: translateY(-2px);
-    }
-}
-
-// Mobile breakpoint mixin
-@mixin mobile($max: 768px) {
-    @media (max-width: $max) {
-        @content;
     }
 }
 
