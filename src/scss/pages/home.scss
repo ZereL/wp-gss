@@ -4,13 +4,25 @@
 .hero {
     background-image: linear-gradient(
         90deg,
-        rgba(72, 151, 199, 1) 0%,
-        rgba(6, 181, 139, 1) 39%,
+        rgba(6, 181, 139, 1) 0%,
+        rgba(72, 151, 199, 1) 50%,
         rgba(221, 237, 232, 1) 100%
     );
     padding: var(--space-10) 0 var(--space-10);
     overflow: hidden;
     position: relative;
+
+    /* darken the whole hero (gradient + image) at mid widths so the copy reads */
+    @include media-breakpoint-between(md, xl) {
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+        }
+    }
 }
 
 .hero__inner {
@@ -92,7 +104,7 @@
 /* The text column sits above the absolutely-positioned image */
 .hero .wp-block-column:not(:has(.wp-block-image)) {
     position: relative;
-    z-index: 1;
+    z-index: 2; /* above the image (0) and the darkening overlay (1) */
 }
 
 /* The figure wrapper Gutenberg adds around the image */
@@ -115,11 +127,6 @@
     object-fit: cover; /* crops rather than distorts if aspect ratio doesn't match */
     object-position: right center; /* keep the right side of the image visible when cropped */
     display: block;
-
-    /* darken the image where it sits behind the hero copy at mid widths */
-    @include media-breakpoint-between(md, xl) {
-        filter: brightness(0.55) saturate(0.9);
-    }
 }
 
 // ─── Social Proof Bar ─────────────────────────────────────
