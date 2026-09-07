@@ -1,5 +1,5 @@
+@use 'sass:map';
 @use '../variables' as *;
-
 // ─────────────────────────────────────────────────────────────
 // PAGE HERO SECTION
 // ─────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: var(--space-6);
-        @include container(1280px);
+        @include container(map.get($grid-breakpoints, xl));
     }
 
     &__item {
@@ -383,7 +383,7 @@
 // ─────────────────────────────────────────────────────────────
 
 .container {
-    @include container(1280px);
+    @include container(map.get($grid-breakpoints, xl));
 
     &--narrow {
         max-width: 900px;

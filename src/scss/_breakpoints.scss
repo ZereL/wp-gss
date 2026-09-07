@@ -6,18 +6,15 @@
 
 // Breakpoint viewport sizes and media queries.
 //
-// Breakpoints are defined as a map of (name: minimum width), ordered from small to large:
-//
-//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px)
-//
-// Override this map before `@use`-ing this file (or the variables file that
-// forwards it) with `with ($grid-breakpoints: (...))` to customise.
+// Breakpoints are defined as a map of (name: minimum width), ordered from small to large.
+// Override with `@use 'breakpoints' with ($grid-breakpoints: (...))` (or via the
+// variables file that forwards this one).
 $grid-breakpoints: (
-    xs: 0,
+    xs: 320px,
     sm: 576px,
     md: 768px,
     lg: 992px,
-    xl: 1200px,
+    xl: 1280px, // generatepress default is 1280px, Bootstrap default is 1200px
     xxl: 1400px,
     xxxl: 1920px,
 ) !default;

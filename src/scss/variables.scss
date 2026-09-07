@@ -1,5 +1,7 @@
 // Re-export the Bootstrap-style responsive mixins so every file that does
 // `@use 'variables' as *` also gets media-breakpoint-up / -down / -between / -only.
+@use 'sass:map';
+@use 'breakpoints' as *;
 @forward 'breakpoints';
 
 // ─── 1. SCSS Variables (mirrors CSS custom properties) ────────
@@ -132,7 +134,9 @@ $nav-h: 68px;
     align-items: center;
 }
 
-@mixin container($max: 1280px) {
+// `$grid-breakpoints` is defined in `_breakpoints.scss` and re-exported above.
+
+@mixin container($max: map.get($grid-breakpoints, xl)) {
     max-width: $max;
     margin-inline: auto;
     padding-inline: $space-6;

@@ -3,6 +3,7 @@
    ============================================================= */
 
 // ─── SCSS Variables (mirrors CSS custom properties) ────────
+@use 'sass:map';
 @use 'variables' as *;
 
 // ─── Reset + Base ──────────────────────────────────────────
@@ -81,7 +82,7 @@ button {
 
 // ─── Layout Utilities ──────────────────────────────────────
 .container {
-    @include container(1280px);
+    @include container(map.get($grid-breakpoints, xl));
 
     &--narrow {
         @include container(760px);
@@ -373,7 +374,7 @@ $spacing-properties: (
     justify-content: space-between;
     gap: 2rem;
     height: 100%;
-    max-width: 1280px;
+    max-width: map.get($grid-breakpoints, xl);
     margin: 0 auto;
     padding: 0 2rem;
 }

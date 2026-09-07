@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../variables' as *;
 
 // ─── Hero ─────────────────────────────────────────────────
@@ -26,7 +27,7 @@
 }
 
 .hero__inner {
-    max-width: 1280px;
+    max-width: map.get($grid-breakpoints, xl);
     margin-inline: auto;
     padding-inline: var(--space-6);
     display: grid;
@@ -54,10 +55,7 @@
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.7;
     margin-bottom: var(--space-8);
-    max-width: 520px;
-    a {
-        text-decoration: underline;
-    }
+    max-width: 380px;
 }
 
 .hero__actions {
@@ -139,7 +137,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: var(--space-6);
-        @include container(1280px);
+        @include container(map.get($grid-breakpoints, xl));
     }
 
     &__item {
