@@ -22,6 +22,7 @@ html {
 
 body {
     font-family: var(--font-ui);
+    font-size: var(--body-size);
     color: var(--grey-900);
     background: var(--white);
     line-height: 1.6;
@@ -79,10 +80,10 @@ hr {
     text-align: center;
 }
 .text-sm {
-    font-size: 0.875rem;
+    font-size: var(--body-size);
 }
 .text-xs {
-    font-size: 0.75rem;
+    font-size: var(--h6);
 }
 
 // ─── Layout Utilities ──────────────────────────────────────
@@ -152,7 +153,7 @@ hr {
 
 .section-title {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-size: var(--h1);
     font-weight: 800;
     line-height: 1.2;
     color: var(--grey-900);
@@ -160,7 +161,7 @@ hr {
 }
 
 .section-sub {
-    font-size: 1.125rem;
+    font-size: var(--h4);
     color: var(--grey-500);
     max-width: 600px;
     margin-inline: auto;
@@ -248,7 +249,7 @@ $spacing-properties: (
     --btn-radius: var(--radius-pill, 999px);
     --btn-pad-y: var(--space-1, 0.6rem);
     --btn-pad-x: var(--space-4, 1.25rem);
-    --btn-font-size: 0.9375rem;
+    --btn-font-size: var(--body-size);
     --btn-gap: 0.5rem;
 }
 
@@ -426,7 +427,7 @@ $spacing-properties: (
 
             > a {
                 color: $white;
-                font-size: 0.9rem;
+                font-size: var(--body-size);
                 font-weight: 500;
                 padding: 0.5rem 0.75rem;
                 border-radius: 0.25rem;
@@ -502,7 +503,7 @@ $spacing-properties: (
             display: block;
             padding: 0.5rem 1rem;
             color: rgba($white, 0.85);
-            font-size: 0.875rem;
+            font-size: var(--body-size);
             font-weight: 500;
             border-radius: 0.25rem;
             white-space: nowrap;
@@ -678,7 +679,7 @@ $spacing-properties: (
         }
 
         .mobile-menu {
-            font-size: 0.75rem;
+            font-size: var(--h6);
             font-weight: 600;
             text-transform: uppercase;
             font-family: $font-ui;
@@ -779,7 +780,7 @@ $spacing-properties: (
                     justify-content: space-between;
                     padding: $space-3 $space-4;
                     color: $white;
-                    font-size: 1rem;
+                    font-size: var(--body-size);
                     font-weight: 600;
                     font-family: $font-ui;
                     text-decoration: none;
@@ -789,7 +790,7 @@ $spacing-properties: (
                     @include media-breakpoint-down(sm) {
                         width: 100%;
                         padding: $space-4;
-                        font-size: 1.0625rem;
+                        font-size: var(--body-size);
 
                         &:hover {
                             background: rgba($white, 0.08);
@@ -865,7 +866,7 @@ $spacing-properties: (
                 display: block;
                 padding: $space-2 $space-3;
                 color: $grey-900;
-                font-size: 0.875rem;
+                font-size: var(--body-size);
                 font-weight: 500;
                 font-family: $font-ui;
                 text-decoration: none;
@@ -874,7 +875,7 @@ $spacing-properties: (
                 @include media-breakpoint-down(sm) {
                     padding: $space-3 $space-4 $space-3 $space-6;
                     color: rgba($white, 0.85);
-                    font-size: 0.9375rem;
+                    font-size: var(--body-size);
 
                     &:hover {
                         background: rgba($white, 0.08);
@@ -911,7 +912,7 @@ $spacing-properties: (
         cursor: pointer;
         padding: $space-2;
         color: inherit;
-        font-size: 0.75rem;
+        font-size: var(--h6);
         margin-left: $space-1;
         transition: all 0.2s ease;
         align-items: center;
@@ -1004,7 +1005,7 @@ $spacing-properties: (
             gap: $space-2;
             padding: $space-2 $space-4;
             border-radius: $radius-pill;
-            font-size: 0.875rem;
+            font-size: var(--body-size);
             font-weight: 600;
             font-family: $font-ui;
             text-decoration: none;
@@ -1015,7 +1016,7 @@ $spacing-properties: (
 
             @include media-breakpoint-down(sm) {
                 padding: $space-2 $space-3;
-                font-size: 0.8125rem;
+                font-size: var(--h6);
             }
 
             &:focus {
@@ -1279,7 +1280,7 @@ $spacing-properties: (
 }
 
 .site-footer-widget-area .widget-title {
-    font-size: 14px;
+    font-size: var(--body-size);
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -1298,7 +1299,7 @@ $spacing-properties: (
 .site-footer-widget-area .widget a {
     color: #fff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--body-size);
     transition: opacity 0.3s ease;
 }
 
@@ -1307,7 +1308,7 @@ $spacing-properties: (
 }
 
 .site-footer-widget-area .textwidget {
-    font-size: 14px;
+    font-size: var(--body-size);
     line-height: 1.6;
 }
 
@@ -1315,7 +1316,7 @@ $spacing-properties: (
 .site-footer-widget-area .textwidget a {
     display: inline-block;
     margin-right: 15px;
-    font-size: 18px;
+    font-size: var(--body-size);
 }
 
 /* Footer Bottom */
@@ -1327,7 +1328,7 @@ $spacing-properties: (
     margin: 0 auto;
     padding: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 12px;
+    font-size: var(--h6);
 }
 
 .footer-left {
@@ -1341,14 +1342,14 @@ $spacing-properties: (
 
 .footer-copyright {
     margin: 0;
-    font-size: 12px;
+    font-size: var(--h6);
 }
 
 .footer-links a {
     color: #fff;
     text-decoration: none;
     margin-left: 20px;
-    font-size: 12px;
+    font-size: var(--h6);
     transition: opacity 0.3s ease;
 }
 
@@ -1408,7 +1409,7 @@ $spacing-properties: (
 // ─── FORM TITLE ───────────────────────────
 .nf-form-title {
     h3 {
-        font-size: 1.875rem;
+        font-size: var(--h3);
         font-weight: 700;
         color: $grey-900;
         margin-bottom: $space-8;
@@ -1427,7 +1428,7 @@ $spacing-properties: (
 
 // ─── FIELDS REQUIRED MESSAGE ──────────────
 .nf-form-fields-required {
-    font-size: 0.8125rem;
+    font-size: var(--h6);
     color: $grey-500;
     margin-bottom: $space-6;
     padding: $space-4;
@@ -1446,7 +1447,7 @@ $spacing-properties: (
 .nf-field-label {
     label,
     .nf-label-span {
-        font-size: 0.875rem;
+        font-size: var(--body-size);
         font-weight: 600;
         color: $grey-900;
         letter-spacing: 0.3px;
@@ -1489,7 +1490,7 @@ $spacing-properties: (
         padding: $space-3 $space-4;
         border: 1px solid $grey-300;
         border-radius: $radius-sm;
-        font-size: 0.875rem;
+        font-size: var(--body-size);
         color: $grey-900;
         background-color: $white;
         font-family: $font-ui;
@@ -1578,7 +1579,7 @@ $spacing-properties: (
             }
 
             label {
-                font-size: 0.875rem;
+                font-size: var(--body-size);
                 color: $grey-900;
                 cursor: pointer;
                 margin: 0;
@@ -1617,7 +1618,7 @@ $spacing-properties: (
         border: none;
         padding: $space-3 $space-8;
         border-radius: $radius-pill !important;
-        font-size: 0.9375rem;
+        font-size: var(--body-size);
         font-weight: 600;
         cursor: pointer;
         @include flex-center;
@@ -1662,7 +1663,7 @@ $spacing-properties: (
 // ─── HELP TEXT ────────────────────────────
 .nf-help-text,
 .nf-sr-only {
-    font-size: 0.8125rem;
+    font-size: var(--h6);
     color: $grey-500;
     font-style: italic;
     margin-top: $space-2;
@@ -1699,7 +1700,7 @@ select {
     }
 
     .nf-form-title h3 {
-        font-size: 1.5rem;
+        font-size: var(--h4);
     }
 
     .nf-form-content {
@@ -1746,4 +1747,130 @@ select {
 // ─── HONEYPOT (Hidden) ────────────────────
 .nf-form-hp {
     display: none !important;
+}
+
+// ─── Hero ─────────────────────────────────────────────────
+.hero {
+    background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 50%, #ddede8 100%);
+    padding: var(--space-10) 0 var(--space-10);
+    overflow: hidden;
+    position: relative;
+
+    /* darken the whole hero (gradient + image) at mid widths so the copy reads */
+    @include media-breakpoint-between(md, xl) {
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+        }
+    }
+}
+
+.hero__inner {
+    max-width: map.get($grid-breakpoints, xl);
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+}
+
+.hero__label {
+    @include tag-label($secondary-light);
+    margin-bottom: $space-4;
+}
+
+.hero__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    // font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.02em;
+}
+.hero__title em {
+    font-style: normal;
+    // color: var(--green-light);
+}
+
+.hero__sub {
+    font-size: var(--body-size);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+    max-width: 380px;
+}
+
+.hero__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.hero__disclaimer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    font-size: var(--h6);
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+}
+.hero__disclaimer svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+.hero__disclaimer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.hero__disclaimer a:hover {
+    color: #ffffff;
+}
+
+.hero .wp-block-columns {
+    align-items: stretch; /* make both columns equal height */
+    display: flex; /* Gutenberg already does this, but be explicit */
+}
+
+/* The image's column wrapper */
+.hero .wp-block-column:has(.wp-block-image) {
+    display: flex;
+    align-items: stretch; /* override the inline "is-vertically-aligned-center" */
+    justify-content: flex-end; /* push content to the right */
+}
+
+/* The text column sits above the absolutely-positioned image */
+.hero .wp-block-column:not(:has(.wp-block-image)) {
+    position: relative;
+    z-index: 2; /* above the image (0) and the darkening overlay (1) */
+}
+
+/* The figure wrapper Gutenberg adds around the image */
+.hero .wp-block-image {
+    @include media-breakpoint-between(md, xxxl) {
+        position: absolute; /* position it so we can crop it with object-fit */
+        z-index: 0; /* keep it behind the hero copy */
+        margin: 0;
+        top: 0;
+        height: 100%;
+        right: 0;
+    }
+}
+
+/* The actual <img> */
+.hero .wp-block-image img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover; /* crops rather than distorts if aspect ratio doesn't match */
+    object-position: right center; /* keep the right side of the image visible when cropped */
+    display: block;
 }

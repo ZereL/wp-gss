@@ -61,6 +61,16 @@ $shadow-lg:
 
 $nav-h: 68px;
 
+// Heading type scale — GeneratePress defaults, expressed in rem (1rem = 16px)
+$h1: 2.625rem; // 42px
+$h2: 2.1875rem; // 35px
+$h3: 1.8125rem; // 29px
+$h4: 1.125rem; // 24px
+$h5: 0.875rem; // 14px
+$h6: 0.6875rem; // 11px
+
+$body-size: 0.9375rem; // 15px — default body / UI text
+
 // ─── 2. CSS Custom Properties (runtime tokens) ────────────────
 :root {
     --primary: #{$primary};
@@ -107,6 +117,13 @@ $nav-h: 68px;
     --shadow-md: #{$shadow-md};
     --shadow-lg: #{$shadow-lg};
     --nav-h: #{$nav-h};
+    --h1: #{$h1};
+    --h2: #{$h2};
+    --h3: #{$h3};
+    --h4: #{$h4};
+    --h5: #{$h5};
+    --h6: #{$h6};
+    --body-size: #{$body-size};
 }
 
 // ─── 3. Mixins ────────────────────────────────────────────────
@@ -158,7 +175,7 @@ $nav-h: 68px;
 }
 
 @mixin tag-label($color: $secondary) {
-    font-size: 0.6875rem;
+    font-size: var(--h6);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -178,7 +195,7 @@ $nav-h: 68px;
     display: inline-flex;
     align-items: center;
     gap: $space-2;
-    font-size: 0.8125rem;
+    font-size: var(--h6);
     font-weight: 600;
     padding: $space-1 $space-3;
     border-radius: $radius-pill;
@@ -190,7 +207,7 @@ $nav-h: 68px;
     justify-content: center;
     font-family: $font-ui;
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: var(--body-size);
     border: none;
     border-radius: $radius-sm;
     cursor: pointer;
@@ -217,7 +234,7 @@ $nav-h: 68px;
     display: inline-flex;
     align-items: center;
     gap: $space-2;
-    font-size: 0.8125rem;
+    font-size: var(--h6);
     font-weight: 600;
     padding: $space-1 $space-3;
     border-radius: $radius-pill;
