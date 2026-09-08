@@ -129,6 +129,10 @@ $nav-h: 68px;
     display: flex;
     flex-direction: column;
 }
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
 @mixin flex-align {
     display: flex;
     align-items: center;

@@ -51,6 +51,11 @@ button {
     background: none;
 }
 
+hr {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
 // ─── Typography Utilities ──────────────────────────────────
 .font-display {
     font-family: var(--font-display);

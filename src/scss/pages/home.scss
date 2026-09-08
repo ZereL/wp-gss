@@ -3,12 +3,7 @@
 
 // ─── Hero ─────────────────────────────────────────────────
 .hero {
-    background-image: linear-gradient(
-        90deg,
-        rgba(6, 181, 139, 1) 0%,
-        rgba(72, 151, 199, 1) 50%,
-        rgba(221, 237, 232, 1) 100%
-    );
+    background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 50%, #ddede8 100%);
     padding: var(--space-10) 0 var(--space-10);
     overflow: hidden;
     position: relative;
@@ -234,12 +229,107 @@
 }
 
 // ─── Features Grid ────────────────────────────────────────
+.features-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.features-label {
+    @include tag-label($secondary);
+    margin-bottom: var(--space-3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.features-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--grey-900);
+    margin-bottom: var(--space-4);
+}
+
+.features-sub {
+    font-size: 1.125rem;
+    color: var(--grey-500);
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: 0px;
+}
 .features__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
     @include media-breakpoint-down(sm) {
         grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
+.freight-ops-hero {
+    min-height: 200px;
+    overflow: visible;
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-20);
+
+    .wp-block-cover__inner-container {
+        margin-top: -20px !important;
+        margin-bottom: -20px !important;
+    }
+
+    .wp-block-cover__inner-container {
+        @include container(map.get($grid-breakpoints, xl));
+    }
+
+    .freight-ops-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        margin: 0;
+
+        > .wp-block-column {
+            flex: 1 1 0;
+            margin: 0;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .freight-ops-side {
+        position: relative;
+        z-index: 1;
+        transform: scale(0.9);
+    }
+
+    .freight-ops-middle {
+        position: relative;
+        z-index: 2;
+        transform: translateY(0px) scale(1.1);
+    }
+
+    @media (max-width: 700px) {
+        min-height: 180px;
+
+        .freight-ops-row {
+            gap: 0;
+        }
+
+        .freight-ops-side {
+            transform: scale(0.8);
+        }
+
+        .freight-ops-middle {
+            transform: scale(1.08) translateY(-12px);
+        }
     }
 }
 
@@ -271,7 +361,7 @@
 
 // ─── Logo Strip ───────────────────────────────────────────
 .logo-strip-section {
-    background: var(--grey-50);
+    // background: var(--grey-50);
     padding-block: var(--space-12);
     border-block: 1px solid var(--grey-200);
 }
@@ -280,25 +370,25 @@
     overflow: hidden;
     position: relative;
 
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 80px;
-        z-index: 2;
-        pointer-events: none;
-    }
+    // &::before,
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     bottom: 0;
+    //     width: 80px;
+    //     z-index: 2;
+    //     pointer-events: none;
+    // }
 
-    &::before {
-        left: 0;
-        background: linear-gradient(to right, var(--grey-50), transparent);
-    }
-    &::after {
-        right: 0;
-        background: linear-gradient(to left, var(--grey-50), transparent);
-    }
+    // &::before {
+    //     left: 0;
+    //     background: linear-gradient(to right, var(--grey-50), transparent);
+    // }
+    // &::after {
+    //     right: 0;
+    //     background: linear-gradient(to left, var(--grey-50), transparent);
+    // }
 
     &__inner {
         display: flex;
@@ -807,8 +897,25 @@
     &__layout {
         display: grid;
         grid-template-columns: 1fr 340px;
-        gap: var(--space-10);
+        gap: var(--space-6);
         align-items: start;
+        // Table stays top-left
+        .comparison__table-wrap {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        // Image takes the old callouts spot — top-right
+        .comparison__image {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        // Callouts drop to a new full-width row underneath
+        .comparison__callouts {
+            grid-column: 1 / -1;
+            grid-row: 2;
+        }
     }
 
     &__table-wrap {
@@ -897,8 +1004,44 @@
     }
 
     &__callouts {
-        @include flex-col;
+        @include flex-row;
         gap: var(--space-4);
+    }
+
+    &__image {
+        grid-column: 2;
+        grid-row: 1;
+
+        // Makes this area the same height as the table row
+        align-self: stretch;
+        min-height: 0;
+        position: relative;
+        isolation: isolate;
+        overflow: visible; // important
+        border-radius: var(--radius-lg);
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0%;
+            right: -12px;
+            bottom: 22px;
+            left: 18%;
+            background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 100%);
+            border-radius: 90px 60px 90px var(--radius-lg);
+        }
+
+        img {
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            display: block;
+            width: calc(100% - 12px); // fills the tall area, cropping excess image
+            margin-top: 22px;
+            height: calc(100% - 22px);
+            object-fit: cover; // fills the tall area, cropping excess image
+            object-position: center;
+        }
     }
 
     &__callout {
