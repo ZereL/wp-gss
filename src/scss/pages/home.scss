@@ -800,6 +800,7 @@
     &__table-wrap {
         margin-top: 22px;
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
     }
@@ -813,8 +814,15 @@
         overflow: hidden;
         font-size: var(--h5);
         margin-bottom: 0px;
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
             table-layout: auto;
+            // keep columns legible; the wrap scrolls horizontally
+            min-width: 34rem;
+            font-size: var(--body-size);
+        }
+        @include media-breakpoint-down(sm) {
+            min-width: 30rem;
+            font-size: var(--h6);
         }
     }
 
@@ -948,6 +956,37 @@
             font-size: var(--h6);
             color: var(--grey-500);
             line-height: 1.65;
+        }
+    }
+
+    // ── Mobile: horizontal-scroll table with a frozen feature column ──
+    // Placed last so it wins over the base cell rules above.
+    @include media-breakpoint-down(md) {
+        &__th,
+        &__feature,
+        &__cell {
+            padding: var(--space-2) var(--space-3);
+        }
+
+        &__th--feature,
+        &__feature {
+            position: sticky;
+            left: 0;
+            box-shadow: 1px 0 0 var(--grey-200);
+        }
+
+        &__th--feature {
+            z-index: 3; // above the sticky body cells and the header row
+            background: var(--grey-900); // keep the dark header colour
+        }
+
+        &__feature {
+            z-index: 2;
+            background: var(--white); // opaque so scrolling cells pass behind
+        }
+
+        &__row--alt &__feature {
+            background: var(--grey-50);
         }
     }
 }
@@ -1330,9 +1369,29 @@
         &__layout {
             grid-template-columns: 1fr;
         }
-        &__th--other:nth-child(n + 4),
-        &__cell:nth-child(n + 4) {
-            display: none;
+        // undo the desktop grid placement so everything stacks in source order
+        &__table-wrap,
+        &__image,
+        &__callouts {
+            grid-column: 1 !important;
+            grid-row: auto !important;
+        }
+        &__image {
+            order: -1; // show the visual first, above the table
+            align-self: auto;
+
+            &::before {
+                display: none; // drop the decorative ball on small screens
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                margin-top: 0;
+            }
+        }
+        &__callouts {
+            flex-direction: column;
         }
     }
 
