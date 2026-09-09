@@ -798,6 +798,7 @@
     }
 
     &__table-wrap {
+        margin-top: 22px;
         overflow-x: auto;
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
@@ -896,19 +897,17 @@
         min-height: 0;
         position: relative;
         isolation: isolate;
-        overflow: visible; // important
+        overflow: hidden;
         border-radius: var(--radius-lg);
 
+        // Decorative gradient ball behind the image (real SVG, not a background)
         &::before {
-            content: '';
+            content: url('../../assets/ball.svg');
             position: absolute;
             z-index: -1;
-            top: 0%;
-            right: -12px;
-            bottom: 22px;
-            left: 18%;
-            background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 100%);
-            border-radius: 90px 60px 90px var(--radius-lg);
+            width: 118%;
+            height: auto;
+            right: -24%;
         }
 
         img {
