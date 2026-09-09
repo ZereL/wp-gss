@@ -1048,7 +1048,8 @@
         @extend %pill-badge;
         background: rgba($primary, 0.15);
         border: 1px solid rgba($primary, 0.3);
-        color: var(--green-light);
+        // color: var(--green-light);
+        color: var(--white);
         margin-bottom: var(--space-5);
     }
 

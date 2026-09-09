@@ -1751,10 +1751,11 @@ select {
 
 // ─── Hero ─────────────────────────────────────────────────
 .hero {
-    background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 50%, #ddede8 100%);
-    padding: var(--space-10) 0 var(--space-10);
+    background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 100%);
+    padding: var(--space-5) 0 var(--space-5);
     overflow: hidden;
     position: relative;
+    min-height: 350px;
 
     /* darken the whole hero (gradient + image) at mid widths so the copy reads */
     @include media-breakpoint-between(md, xl) {
@@ -1804,6 +1805,14 @@ select {
     line-height: 1.7;
     margin-bottom: var(--space-8);
     max-width: 380px;
+}
+
+.wp-block-group.hero__content {
+    > .wp-block-group__inner-container {
+        *:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 
 .hero__actions {
