@@ -1078,7 +1078,8 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba($primary, 0.15) 0%, transparent 70%);
+        // background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba($primary, 0.15) 0%, transparent 70%);
+        background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 100%);
         pointer-events: none;
     }
 

@@ -449,7 +449,8 @@
 // CTA BANNER SECTION
 // ============================================
 .cta-banner {
-    background: linear-gradient(135deg, $navy 0%, $navy-light 100%);
+    // background: linear-gradient(135deg, $navy 0%, $navy-light 100%);
+    background-image: linear-gradient(90deg, #06b58b 0%, #4897c7 100%);
     color: $white;
     padding: $space-24 0;
     text-align: center;
