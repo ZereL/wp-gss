@@ -775,7 +775,7 @@
 .comparison {
     &__layout {
         display: grid;
-        grid-template-columns: 1fr 340px;
+        grid-template-columns: 1fr 400px;
         gap: var(--space-6);
         align-items: start;
         // Table stays top-left
@@ -818,7 +818,7 @@
     }
 
     &__th {
-        padding: var(--space-4) var(--space-5);
+        padding: var(--space-2) var(--space-2);
         font-size: var(--h6);
         font-weight: 700;
         text-transform: uppercase;
@@ -857,14 +857,14 @@
     }
 
     &__feature {
-        padding: var(--space-4) var(--space-5);
+        padding: var(--space-2) var(--space-2);
         font-weight: 500;
         color: var(--grey-700);
         text-align: left;
     }
 
     &__cell {
-        padding: var(--space-4) var(--space-3);
+        padding: var(--space-2) var(--space-2);
         text-align: center;
         vertical-align: middle;
 
