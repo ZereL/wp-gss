@@ -1364,7 +1364,7 @@ $spacing-properties: (
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@include media-breakpoint-down(sm) {
     .site-footer-widgets-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
@@ -1385,14 +1385,14 @@ $spacing-properties: (
     }
 }
 
-@media (max-width: 480px) {
+@include media-breakpoint-down(sm) {
     .site-footer-widgets-container {
         grid-template-columns: 1fr;
     }
 }
 
 // ─── Responsive ───────────────────────────────────────────
-@media (max-width: 1024px) {
+@include media-breakpoint-down(xl) {
     .footer__grid {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-8);
@@ -1551,7 +1551,7 @@ $spacing-properties: (
         grid-template-columns: repeat(2, 1fr);
         gap: $space-4;
 
-        @media (max-width: 768px) {
+        @include media-breakpoint-down(sm) {
             grid-template-columns: 1fr;
         }
 
@@ -1652,7 +1652,7 @@ $spacing-properties: (
         }
     }
 
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(sm) {
         input[type='submit'] {
             width: 100%;
             align-self: stretch;
@@ -1693,7 +1693,7 @@ select {
 }
 
 // ─── RESPONSIVE ADJUSTMENTS ───────────────
-@media (max-width: 768px) {
+@include media-breakpoint-down(sm) {
     .nf-form-wrap {
         padding: $space-2;
         border-radius: $radius-md;

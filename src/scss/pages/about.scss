@@ -384,7 +384,7 @@
 // RESPONSIVE STYLES
 // ─────────────────────────────────────────────────────────────
 
-@media (max-width: 1024px) {
+@include media-breakpoint-down(xl) {
     .about-story {
         grid-template-columns: 1fr;
         gap: $space-8;
@@ -403,7 +403,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(sm) {
     .proof-bar__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: $space-4;
@@ -447,7 +447,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@include media-breakpoint-down(sm) {
     .proof-bar__grid {
         grid-template-columns: 1fr;
     }

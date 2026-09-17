@@ -114,114 +114,114 @@ function gssInit() {
     //     });
     // }
 
-    // 5. Contact form validation
-    const contactForm = document.getElementById('contact-form');
-    const contactSuccess = document.getElementById('contact-success');
+    // // 5. Contact form validation
+    // const contactForm = document.getElementById('contact-form');
+    // const contactSuccess = document.getElementById('contact-success');
 
-    if (contactForm && contactSuccess) {
-        const rules = [
-            { id: 'first-name', errorId: 'first-name-error', validate: (v) => v.trim().length > 0 },
-            { id: 'last-name', errorId: 'last-name-error', validate: (v) => v.trim().length > 0 },
-            { id: 'business', errorId: 'business-error', validate: (v) => v.trim().length > 0 },
-            { id: 'email', errorId: 'email-error', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-            { id: 'subject', errorId: 'subject-error', validate: (v) => v !== '' },
-            { id: 'message', errorId: 'message-error', validate: (v) => v.trim().length > 10 },
-        ];
+    // if (contactForm && contactSuccess) {
+    //     const rules = [
+    //         { id: 'first-name', errorId: 'first-name-error', validate: (v) => v.trim().length > 0 },
+    //         { id: 'last-name', errorId: 'last-name-error', validate: (v) => v.trim().length > 0 },
+    //         { id: 'business', errorId: 'business-error', validate: (v) => v.trim().length > 0 },
+    //         { id: 'email', errorId: 'email-error', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+    //         { id: 'subject', errorId: 'subject-error', validate: (v) => v !== '' },
+    //         { id: 'message', errorId: 'message-error', validate: (v) => v.trim().length > 10 },
+    //     ];
 
-        const clearError = (field, errorEl) => {
-            field.classList.remove('error');
-            errorEl.classList.remove('show');
-        };
+    //     const clearError = (field, errorEl) => {
+    //         field.classList.remove('error');
+    //         errorEl.classList.remove('show');
+    //     };
 
-        rules.forEach(({ id, errorId }) => {
-            const field = document.getElementById(id);
-            const errorEl = document.getElementById(errorId);
-            if (field && errorEl) {
-                field.addEventListener('input', () => clearError(field, errorEl));
-                field.addEventListener('change', () => clearError(field, errorEl));
-            }
-        });
+    //     rules.forEach(({ id, errorId }) => {
+    //         const field = document.getElementById(id);
+    //         const errorEl = document.getElementById(errorId);
+    //         if (field && errorEl) {
+    //             field.addEventListener('input', () => clearError(field, errorEl));
+    //             field.addEventListener('change', () => clearError(field, errorEl));
+    //         }
+    //     });
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let valid = true;
+    //     contactForm.addEventListener('submit', (e) => {
+    //         e.preventDefault();
+    //         let valid = true;
 
-            rules.forEach(({ id, errorId, validate }) => {
-                const field = document.getElementById(id);
-                const errorEl = document.getElementById(errorId);
-                if (!field || !errorEl) return;
-                if (!validate(field.value)) {
-                    field.classList.add('error');
-                    errorEl.classList.add('show');
-                    if (valid) field.focus();
-                    valid = false;
-                } else {
-                    clearError(field, errorEl);
-                }
-            });
+    //         rules.forEach(({ id, errorId, validate }) => {
+    //             const field = document.getElementById(id);
+    //             const errorEl = document.getElementById(errorId);
+    //             if (!field || !errorEl) return;
+    //             if (!validate(field.value)) {
+    //                 field.classList.add('error');
+    //                 errorEl.classList.add('show');
+    //                 if (valid) field.focus();
+    //                 valid = false;
+    //             } else {
+    //                 clearError(field, errorEl);
+    //             }
+    //         });
 
-            if (valid) {
-                contactForm.style.display = 'none';
-                contactSuccess.classList.add('show');
-                // Re-init feather icons inside success block
-                if (typeof feather !== 'undefined') feather.replace();
-            }
-        });
-    }
+    //         if (valid) {
+    //             contactForm.style.display = 'none';
+    //             contactSuccess.classList.add('show');
+    //             // Re-init feather icons inside success block
+    //             if (typeof feather !== 'undefined') feather.replace();
+    //         }
+    //     });
+    // }
 
-    // 6. Homepage contact form validation
-    const homeForm = document.getElementById('home-contact-form');
-    const homeSuccess = document.getElementById('home-contact-success');
+    // // 6. Homepage contact form validation
+    // const homeForm = document.getElementById('home-contact-form');
+    // const homeSuccess = document.getElementById('home-contact-success');
 
-    if (homeForm && homeSuccess) {
-        const homeRules = [
-            { id: 'hc-business', errorId: 'hc-business-error', validate: (v) => v.trim().length > 0 },
-            { id: 'hc-phone', errorId: 'hc-phone-error', validate: (v) => v.trim().length > 0 },
-            { id: 'hc-email', errorId: 'hc-email-error', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-            { id: 'hc-address', errorId: 'hc-address-error', validate: (v) => v.trim().length > 0 },
-            { id: 'hc-spend', errorId: 'hc-spend-error', validate: (v) => v !== '' },
-        ];
+    // if (homeForm && homeSuccess) {
+    //     const homeRules = [
+    //         { id: 'hc-business', errorId: 'hc-business-error', validate: (v) => v.trim().length > 0 },
+    //         { id: 'hc-phone', errorId: 'hc-phone-error', validate: (v) => v.trim().length > 0 },
+    //         { id: 'hc-email', errorId: 'hc-email-error', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+    //         { id: 'hc-address', errorId: 'hc-address-error', validate: (v) => v.trim().length > 0 },
+    //         { id: 'hc-spend', errorId: 'hc-spend-error', validate: (v) => v !== '' },
+    //     ];
 
-        const clearErr = (field, errorEl) => {
-            field.classList.remove('error');
-            errorEl.classList.remove('show');
-        };
+    //     const clearErr = (field, errorEl) => {
+    //         field.classList.remove('error');
+    //         errorEl.classList.remove('show');
+    //     };
 
-        homeRules.forEach(({ id, errorId }) => {
-            const field = document.getElementById(id);
-            const errorEl = document.getElementById(errorId);
-            if (field && errorEl) {
-                field.addEventListener('input', () => clearErr(field, errorEl));
-                field.addEventListener('change', () => clearErr(field, errorEl));
-            }
-        });
+    //     homeRules.forEach(({ id, errorId }) => {
+    //         const field = document.getElementById(id);
+    //         const errorEl = document.getElementById(errorId);
+    //         if (field && errorEl) {
+    //             field.addEventListener('input', () => clearErr(field, errorEl));
+    //             field.addEventListener('change', () => clearErr(field, errorEl));
+    //         }
+    //     });
 
-        homeForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let valid = true;
+    //     homeForm.addEventListener('submit', (e) => {
+    //         e.preventDefault();
+    //         let valid = true;
 
-            homeRules.forEach(({ id, errorId, validate }) => {
-                const field = document.getElementById(id);
-                const errorEl = document.getElementById(errorId);
-                if (!field || !errorEl) return;
-                if (!validate(field.value)) {
-                    field.classList.add('error');
-                    errorEl.classList.add('show');
-                    if (valid) field.focus();
-                    valid = false;
-                } else {
-                    clearErr(field, errorEl);
-                }
-            });
+    //         homeRules.forEach(({ id, errorId, validate }) => {
+    //             const field = document.getElementById(id);
+    //             const errorEl = document.getElementById(errorId);
+    //             if (!field || !errorEl) return;
+    //             if (!validate(field.value)) {
+    //                 field.classList.add('error');
+    //                 errorEl.classList.add('show');
+    //                 if (valid) field.focus();
+    //                 valid = false;
+    //             } else {
+    //                 clearErr(field, errorEl);
+    //             }
+    //         });
 
-            if (valid) {
-                homeForm.style.display = 'none';
-                homeSuccess.classList.add('show');
-                homeSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                if (typeof feather !== 'undefined') feather.replace();
-            }
-        });
-    }
+    //         if (valid) {
+    //             homeForm.style.display = 'none';
+    //             homeSuccess.classList.add('show');
+    //             homeSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    //             if (typeof feather !== 'undefined') feather.replace();
+    //         }
+    //     });
+    // }
 
     // 7. Shipping Journey tabs
     const journeyTabs = document.querySelectorAll('.journey__tab');

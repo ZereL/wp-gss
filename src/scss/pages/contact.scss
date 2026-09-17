@@ -13,7 +13,7 @@
     padding: $space-24 0;
     text-align: center;
 
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(sm) {
         padding: $space-16 0;
     }
 }
@@ -34,7 +34,7 @@
     margin: $space-4 0;
     line-height: 1.2;
 
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(sm) {
         font-size: var(--h2);
     }
 }
@@ -54,7 +54,7 @@
     background: $white;
     padding: $space-24 0;
 
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(sm) {
         padding: $space-16 0;
     }
 }
@@ -68,7 +68,7 @@
     grid-template-columns: 1fr 1fr;
     gap: $space-8;
 
-    @media (max-width: 1024px) {
+    @include media-breakpoint-down(xl) {
         grid-template-columns: 1fr;
         gap: $space-12;
     }
@@ -275,14 +275,14 @@
 // ============================================
 // RESPONSIVE DESIGN
 // ============================================
-@media (max-width: 1024px) {
+@include media-breakpoint-down(xl) {
     .contact-layout {
         grid-template-columns: 1fr;
         gap: $space-12;
     }
 }
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(sm) {
     .page-hero {
         padding: $space-16 0;
     }
@@ -345,7 +345,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@include media-breakpoint-down(sm) {
     .page-hero {
         padding: $space-12 0;
     }
