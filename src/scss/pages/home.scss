@@ -39,6 +39,10 @@
     }
 }
 
+.hero__sub {
+    max-width: 440px !important; // adjusted for Tadek's new wording
+}
+
 // ─── Pillars ──────────────────────────────────────────────
 .pillars__grid {
     display: grid;
@@ -957,7 +961,7 @@
         }
 
         &-body {
-            font-size: var(--h6);
+            font-size: var(--body-size);
             color: var(--grey-500);
             line-height: 1.65;
         }
